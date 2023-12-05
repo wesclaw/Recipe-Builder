@@ -1,3 +1,9 @@
-////ingreds should have a smoke out on click. they dissapear and appear at bottom like a todo list
+import ingredients from '../database.js'
 
+const wrapperForBtns = document.querySelector('.wrapper-for-buttons')
 
+function generateTopIngredients() {
+  console.log(ingredients)
+}
+
+window.addEventListener('DOMContentLoaded', generateTopIngredients)

@@ -73,18 +73,6 @@ h1{
   color: rgb(28, 185, 178);
 }
 
-.ingred{
-  width: 200px;
-  height: 50px;
-  border-radius: 50px;
-  border: 1px solid rgba(0, 255, 0, 0.281);
-  background-color: rgba(0, 128, 0, 0.219);
-}
-
-.ingred:hover{
-  box-shadow: 0px 0px 10px rgba(43, 102, 43, 0.692);
-}
-
 .container {
   width: 50vw;
   display: flex;
@@ -96,15 +84,20 @@ h1{
 }
 
 .ingred {
-  min-width: 150px;
-  min-height: 30px;
-  background-color: rgba(0, 255, 0, 0.286);
+  min-width: 200px;
+  min-height: 50px;
+  background-color: rgba(0, 255, 0, 0.356);
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  box-shadow: 0px 0px 1px black;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.199);
   cursor: pointer;
+  border-radius: 50px;
+}
+
+.ingred:hover{
+  box-shadow: 0px 0px 10px rgba(43, 102, 43, 0.37);
 }
 
 .ingred p {
@@ -113,24 +106,42 @@ h1{
 }
 
 .ingredImage {
-  width: 25px;
+  width: 30px;
 }
 
 .wrapper{
   text-align: center;
 }
 
-.holder{
-  width: 50vw;
-  margin: 50px auto;
-  min-height: 10vh;
-  border: 1px solid black;
+
+.topbowl {
+  margin-top: 50px;
+  min-width: 350px;
+  height: 170px;
+  border-bottom-right-radius: 30%;
+  border-bottom-left-radius: 30%;
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(0.7px);
+  -webkit-backdrop-filter: blur(0.7px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.ingredient-box{
-  background-color: rgba(0, 255, 0, 0.286);
+.bottom {
+  width: 190px;
+  height: 45px;
+  position: absolute;
+  bottom: -45px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.13);
+  backdrop-filter: blur(0.7px);
+  -webkit-backdrop-filter: blur(0.7px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 @media (max-width: 1000px) {
