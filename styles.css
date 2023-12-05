@@ -120,6 +120,19 @@ h1{
   text-align: center;
 }
 
+.holder{
+  width: 50vw;
+  margin: 50px auto;
+  min-height: 10vh;
+  border: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ingredient-box{
+  background-color: rgba(0, 255, 0, 0.286);
+}
+
 @media (max-width: 1000px) {
   .wrapper-for-buttons {
     width: 100vw;
