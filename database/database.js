@@ -21,7 +21,7 @@ const ingredients = [
   { name: 'Tuna', image: 'images/tuna.png' },
   { name: 'Butter', image: 'images/butter.png' },
   { name: 'Oil', image: 'images/oil.png' },
-  // top 50///
+  // top 21///
   { name: 'Cheese', image: 'images/cheese.png' },
   { name: 'Carrot', image: 'images/carrot.png' },
   { name: 'Spinach', image: 'images/spinach.png' },
