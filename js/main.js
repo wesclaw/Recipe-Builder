@@ -1,6 +1,7 @@
 import ingredients from '/database/database.js'
 
 const wrapperForBtns = document.querySelector('.wrapper-for-buttons')
+const itemsList = document.querySelector('.item-list')
 
 function generateTopIngredients() {
   for(let i=0;i<21;i++){
@@ -21,24 +22,27 @@ function generateTopIngredients() {
   }
 }
 
+
+////because i have this complicated function checking for too many things and i cant add the one addtobowl function. ///i want to click on just the btns and then call the fucntion. i dont wanna check if im touching parent element or classlist. 
+
 function removeAndPutInBowl(e) {
-  if(e.target.parentElement.classList.contains('ingred')){
-    e.target.parentElement.remove()
-  }else if(e.target.classList.contains('ingred')){
-    e.target.remove() 
-  }
-  addToBowl()
+  // const getTarget = e.target
+  // if(e.target.parentElement.classList.contains('ingred')){
+  //   e.target.parentElement.remove()
+  // }else if(e.target.classList.contains('ingred')){
+  //   e.target.remove()  
+  // }
+  // addToBowl(getTarget)
+  
 }
 
-function addToBowl() {
-  console.log('added') 
-}
+removeAndPutInBowl()
 
 
 generateTopIngredients()
 
 
-wrapperForBtns.addEventListener('click', removeAndPutInBowl)
+// wrapperForBtns.addEventListener('click', removeAndPutInBowl)
 
 
 // top ingredients only
