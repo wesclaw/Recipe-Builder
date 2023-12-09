@@ -1,9 +1,11 @@
 import ingredients from '/database/database.js'
 
 const wrapperForBtns = document.querySelector('.wrapper-for-buttons')
-const itemsList = document.querySelector('.item-list')
+const itemsList = document.querySelector('.item-list');
 
-function generateTopIngredients() {
+let chatPromptList = []
+
+function generateTopIngredients(ingred) {
   for(let i=0;i<21;i++){
     const ingred = document.createElement('div')
     ingred.classList.add('ingred')
@@ -19,30 +21,21 @@ function generateTopIngredients() {
     ingred.append(img_el)
 
     wrapperForBtns.append(ingred)
+
+    ////removing the ingred top item on click
+    ingred.addEventListener('click',(e)=>{
+      ingred.style.display = 'none'
+      addToList(ingred)
+    })
   }
 }
 
 
-////because i have this complicated function checking for too many things and i cant add the one addtobowl function. ///i want to click on just the btns and then call the fucntion. i dont wanna check if im touching parent element or classlist. 
-
-function removeAndPutInBowl(e) {
-  // const getTarget = e.target
-  // if(e.target.parentElement.classList.contains('ingred')){
-  //   e.target.parentElement.remove()
-  // }else if(e.target.classList.contains('ingred')){
-  //   e.target.remove()  
-  // }
-  // addToBowl(getTarget)
-  
+function addToList(ingred) {
+  console.log(ingred)
+  const item_el = document.createElement('div')
+  item_el.innerHTML = ingred
+  itemsList.append(item_el)
 }
 
-removeAndPutInBowl()
-
-
 generateTopIngredients()
-
-
-// wrapperForBtns.addEventListener('click', removeAndPutInBowl)
-
-
-// top ingredients only
