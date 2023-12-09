@@ -20,8 +20,8 @@ const ingredients = [
   { name: 'Corn', image: 'images/corn.png' },
   { name: 'Tuna', image: 'images/tuna.png' },
   { name: 'Butter', image: 'images/butter.png' },
-  { name: 'Oil', image: 'images/oil.png' },
-  // top 21///
+  { name: 'Olive Oil', image: 'images/oil.png' },
+  // top 21//////Have a generate more btn to loop through and get 21 random ingredients from the database then display them.
   { name: 'Cheese', image: 'images/cheese.png' },
   { name: 'Carrot', image: 'images/carrot.png' },
   { name: 'Spinach', image: 'images/spinach.png' },
