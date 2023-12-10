@@ -34,37 +34,70 @@ function generateTopIngredients(ingred) {
     ranBtn.innerHTML = `Generate More <img class='ranBtnImg' src='otherImages/dice.png'></img>`
     wrapperForBtns.insertBefore(ranBtn, ingred)
 
-    // random btn e listener
-    ranBtn.addEventListener('click', getRandomIngredients)
+    generateRandomIngred(ranBtn)
+    
 }
 // 
 
-function getRandomIngredients() {
-  for(let i=0;i<ingredients.length;i++){
-    const ingred = document.createElement('div')
-    ingred.classList.add('ingred')
+function generateRandomIngred(ranBtn) {
+  ranBtn.addEventListener('click', e => {
+    wrapperForBtns.innerHTML = '';
+    
+    const displayedIngredients = new Set(); // To track displayed ingredients
 
-    const p_el = document.createElement('p')
-    p_el.textContent = ingredients[i].name
+    // Display the first 50 unique ingredients (or all if there are fewer than 50)
+    for (let i = 0; i < ingredients.length && displayedIngredients.size < 50; i++) {
+      const randomIndex = Math.floor(Math.random() * ingredients.length);
 
-    const img_el = document.createElement('img')
-    img_el.classList.add('ingredImage')
-    img_el.src = ingredients[i].image
+      // Check if the ingredient has already been displayed
+      if (!displayedIngredients.has(randomIndex)) {
+        displayedIngredients.add(randomIndex);
 
-    ingred.append(p_el)
-    ingred.append(img_el)
+        const ingred = document.createElement('div');
+        ingred.classList.add('ingred');
 
-    wrapperForBtns.append(ingred)
+        const p_el = document.createElement('p');
+        p_el.textContent = ingredients[randomIndex].name;
 
-    ////removing the ingred top item on click
-    ingred.addEventListener('click',(e)=>{
-      ingred.style.display = 'none'
-      addToList(p_el, img_el)
-    })
+        const img_el = document.createElement('img');
+        img_el.classList.add('ingredImage');
+        img_el.src = ingredients[randomIndex].image;
+
+        ingred.append(p_el);
+        ingred.append(img_el);
+
+        wrapperForBtns.append(ingred);
+
+        // Removing the ingred top item on click
+        ingred.addEventListener('click', (e) => {
+          ingred.style.display = 'none';
+          addToList(p_el, img_el);
+        });
+      }
+    }
+    const ranBtn = document.createElement('button')
+    ranBtn.classList.add('ranBtn')
+    ranBtn.innerHTML = `Generate More <img class='ranBtnImg' src='otherImages/dice.png'></img>`
+    wrapperForBtns.append(ranBtn)
+
+    generateRandomIngred(ranBtn)
+  });
+  
+}
+
+// Function to shuffle an array using the Fisher-Yates algorithm
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
   }
+  return array;
 }
 
+
+
 // 
+
 
 function addToList(p_el, img_el) {
   const div_tag = document.createElement('div')
