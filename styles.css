@@ -200,6 +200,7 @@ h1{
 
 
 @media (max-width: 1000px) {
+
   .wrapper-for-buttons {
     width: 100vw;
     display: flex;
@@ -208,23 +209,19 @@ h1{
     align-items: center;
     gap: 10px;
   }
-}
-
-@media (max-width: 1000px){
- 
   .inputSearch{
     width: 95vw;
-    font-size: 1.3rem;
+    font-size: .9rem;
     color: gray;
-    padding: 15px;
-    padding-left: 50px;
-    outline: none;
-    border: none;
-    box-shadow: 0px 0px 10px 0px rgba(12, 8, 8, 0.253);
-    border-radius: 50px;
+    padding: 10px;
+    padding-left: 40px;
   }
-  
+  .item-list{
+    gap: 1px;
+    grid-template-columns: 1fr;
+  }
 }
+
 
 
 
