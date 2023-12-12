@@ -38,9 +38,10 @@ function generateTopIngredients(ingred) {
 function addToList(p_el, img_el) {
   const div_tag = document.createElement('div')
   div_tag.classList.add('item_el')
-  const x_tag = document.createElement('p')
+  const x_tag = document.createElement('span')
   x_tag.classList.add('x_tag')
-  x_tag.innerHTML = '\uD83D\uDDD9'
+  // x_tag.innerHTML = '\uD83D\uDDD9'
+  x_tag.innerHTML = `<i class="fa-solid fa-xmark"></i>`
   
   div_tag.append(p_el)
   div_tag.append(img_el)
@@ -53,31 +54,19 @@ function addToList(p_el, img_el) {
 
   console.log(chatPromptList)
 
-  removeIngredients()
+  removeIngredients(div_tag, p_el, x_tag)
+
+  console.log(chatPromptList)
 }
 
-function removeIngredients() {
-  const items = document.querySelectorAll('.item_el')
-  items.forEach((item)=>{
-    item.addEventListener('click',()=>{
-      const getText = item.innerText.trim().charAt(0)+item.innerText.toLowerCase().slice(1)
-      item.remove()
-      removeFromArray(getText)
-    })
-  })
+
+function removeIngredients(div_tag, p_el, x_tag) {
+  /////i changed the p tag to a span holding the icon. now try and get the text content without getting the X. then use the include function to see if its in the chat array
 }
 
-function removeFromArray(getText) {
-  
-  for(let i=0;i<=chatPromptList.length;i++){
-    if(chatPromptList.includes(getText)){
-      chatPromptList.pop()
-      
-      chatPromptList()
-    }
-  }
-}
-
+// function removeFromArray(getText) {
+   
+// }
 
 
 
