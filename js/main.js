@@ -52,7 +52,7 @@ function addToList(p_el, img_el) {
   ///pushing the p textContent into the array for my prompt search recipes. make sure to remove the ingredients when deleted from div_tag. I will use this array for the prompt
   chatPromptList.push(p_el.textContent)
 
-  console.log(chatPromptList)
+  // console.log(chatPromptList)
 
   removeIngredients(div_tag, p_el, x_tag)
 
