@@ -1,4 +1,4 @@
-import ingredients from '/database/database.js'
+import ingredients from '../database/database.js'
 
 const wrapperForBtns = document.querySelector('.wrapper-for-buttons')
 const itemsList = document.querySelector('.item-list');
