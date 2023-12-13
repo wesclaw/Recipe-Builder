@@ -4,7 +4,7 @@ import ingredients from '../database/database.js'
 const wrapperForBtns = document.querySelector('.wrapper-for-buttons')
 const itemsList = document.querySelector('.item-list');
 const form = document.getElementById('form')
-const input = document.getElementById('input')
+const input = document.querySelector('.inputSearch')
 
 let chatPromptList = []
 
@@ -81,12 +81,18 @@ function removeFromArray(item) {
   }
 }
 
+// 
+
 function submitForm(e) {
   e.preventDefault()
   const inputValue = input.value;
+  if(!inputValue){
+    return;
+  }
+  
 }
 
-
+// 
 
 generateTopIngredients()
 

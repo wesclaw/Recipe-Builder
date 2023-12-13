@@ -211,10 +211,10 @@ h1{
   }
   .inputSearch{
     width: 95vw;
-    font-size: .9rem;
+    font-size: 1rem;
     color: gray;
-    padding: 10px;
-    padding-left: 40px;
+    padding: 15px;
+    padding-left: 45px;
   }
   .item-list{
     gap: 1px;
