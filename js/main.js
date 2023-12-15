@@ -74,25 +74,52 @@ function removeIngredients() {
 function removeFromArray(item) {
   const getText = item.textContent;
   const index = chatPromptList.indexOf(getText);
-
   if (index !== -1) {
     chatPromptList.splice(index, 1); ///removing from array
     console.log(chatPromptList); ////this is where i put the final prompt into the chat
   }
 }
-
-// 
-
+ 
 function submitForm(e) {
   e.preventDefault()
   const inputValue = input.value;
   if(!inputValue){
     return;
   }
-  
-}
 
-// 
+  const div_tag = document.createElement('div')
+  div_tag.classList.add('item_el')
+
+  const p_el = document.createElement('p')
+  p_el.textContent = inputValue
+
+  const img_el = document.createElement('img')
+  img_el.classList.add('ingredImage')
+
+  for (let i = 0; i < ingredients.length; i++) {
+    if (inputValue.toLowerCase().includes(ingredients[i].name.toLowerCase())) {
+      img_el.src = ingredients[i].image;
+    }
+  }
+    
+  const x_tag = document.createElement('span')
+  x_tag.classList.add('x_tag')
+  x_tag.innerHTML = `<i class="fa-solid fa-xmark"></i>`
+
+  div_tag.append(p_el)
+  div_tag.append(img_el)
+  div_tag.append(x_tag) 
+  
+  itemsList.append(div_tag)
+
+  chatPromptList.push(inputValue)///adding the inputValue into the array
+
+  removeIngredients() 
+
+  input.value = ''
+
+  console.log(chatPromptList)
+}
 
 generateTopIngredients()
 

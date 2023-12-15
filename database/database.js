@@ -95,6 +95,7 @@ const ingredients = [
   { name: 'Sesame Seed', image: 'images/sesameseeds.png' },
   { name: 'Gouda Cheese', image: 'images/goudacheese.png' },
   { name: 'Hummus', image: 'images/hummus.png' },
+  { name: 'Chili Pepper', image: 'images/chilipepper.png' },
 ];
 
 export default ingredients
