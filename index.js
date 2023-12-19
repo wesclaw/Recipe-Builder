@@ -1,6 +1,6 @@
-require('dotenv').config()
+require('dotenv').config();
 
-const OpenAI = require('openai').OpenAI
+const OpenAI = require('openai').OpenAI;
 const openai = new OpenAI()
 
 async function main() {
