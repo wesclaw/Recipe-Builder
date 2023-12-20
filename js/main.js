@@ -119,12 +119,18 @@ function submitForm(e) {
   input.value = ''
 
   console.log(chatPromptList)
+
+  // 
+  
+  // 
 }
 
 generateTopIngredients()
 
 form.addEventListener('submit', submitForm)
 
+
+export default chatPromptList
 
 
 
