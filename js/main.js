@@ -11,25 +11,40 @@ let chatPromptList = []
 // 
 const ws = new WebSocket('ws://localhost:3000');
 
-ws.addEventListener('open', () => {
-  console.log('we are connected');
-  ws.send('i want to send a message to the server');
-});
+ws.addEventListener('open', sendArrayData)
 
-ws.addEventListener('message', ({ data }) => {
-  if (typeof data === 'string') {
-    console.log(data);
-  } else if (data instanceof Blob) {
-    // Handle binary data (e.g., convert to a readable format)
-    const reader = new FileReader();
-    reader.onload = function(event) {
-      console.log(event.target.result);
-    };
-    reader.readAsText(data);
+
+function sendArrayData() {
+  ws.send(chatPromptList)
+}
+
+
+function removeItem(item) {
+  const index = chatPromptList.indexOf(item);
+  if (index !== -1) {
+    chatPromptList.splice(index, 1);
+    sendArrayData();
   }
-});
+}
 
-// 
+
+
+// ws.addEventListener('message', ({ data }) => {
+//   if (typeof data === 'string') {
+//     console.log(data);
+//   } else if (data instanceof Blob) {
+//     // Handle binary data (e.g., convert to a readable format)
+//     const reader = new FileReader();
+//     reader.onload = function(event) {
+//       console.log(event.target.result);
+//     };
+//     reader.readAsText(data);
+//   }
+// });
+
+
+
+//
 
 
 
@@ -54,6 +69,10 @@ function generateTopIngredients(ingred) {
     ingred.addEventListener('click',(e)=>{
       ingred.style.display = 'none'
       addToList(p_el, img_el)
+
+      // the function here sends the filled array to the server 
+      sendArrayData()
+      // 
     })
   }
   ///making the generate more btn/////
@@ -91,6 +110,8 @@ function removeIngredients() {
       if(e.target.tagName==='I'){
         item.remove()
         removeFromArray(item)
+        // removing from server
+        removeItem(item)
       }
     })
   })
@@ -145,9 +166,9 @@ function submitForm(e) {
 
   console.log(chatPromptList)
 
-  // // 
-  // sendArrayToNode(chatPromptList)
-  // // 
+  // the function here sends the filled array to the server 
+  sendArrayData()
+  // 
 }
 
 generateTopIngredients()

@@ -6,9 +6,9 @@ wss.on('connection', ws => {
   console.log('new client connected')
 
   ws.on('message', data => {
-    console.log(`client has sent us ${data}`)
+    console.log(`${data}`)
 
-    ws.send(data)
+    ws.send(data)    
   })
 
   ws.on('close',()=>{
@@ -41,3 +41,5 @@ async function main() {
 }
 
 main()
+
+
