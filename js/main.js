@@ -8,6 +8,31 @@ const input = document.querySelector('.inputSearch')
 
 let chatPromptList = []
 
+// 
+const ws = new WebSocket('ws://localhost:3000');
+
+ws.addEventListener('open', () => {
+  console.log('we are connected');
+  ws.send('i want to send a message to the server');
+});
+
+ws.addEventListener('message', ({ data }) => {
+  if (typeof data === 'string') {
+    console.log(data);
+  } else if (data instanceof Blob) {
+    // Handle binary data (e.g., convert to a readable format)
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      console.log(event.target.result);
+    };
+    reader.readAsText(data);
+  }
+});
+
+// 
+
+
+
 function generateTopIngredients(ingred) { 
   for(let i=0;i<50;i++){
     const ingred = document.createElement('div')
@@ -120,9 +145,9 @@ function submitForm(e) {
 
   console.log(chatPromptList)
 
-  // 
-  
-  // 
+  // // 
+  // sendArrayToNode(chatPromptList)
+  // // 
 }
 
 generateTopIngredients()
@@ -130,7 +155,6 @@ generateTopIngredients()
 form.addEventListener('submit', submitForm)
 
 
-export default chatPromptList
 
 
 

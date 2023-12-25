@@ -1,13 +1,26 @@
+// 
+const WebSocket = require('ws')
+const wss = new WebSocket.Server({port:3000})
+
+wss.on('connection', ws => {
+  console.log('new client connected')
+
+  ws.on('message', data => {
+    console.log(`client has sent us ${data}`)
+
+    ws.send(data)
+  })
+
+  ws.on('close',()=>{
+    console.log('client has disconnected')
+  })
+})
+
+// 
+
 require('dotenv').config();
 
 const OpenAI = require('openai').OpenAI;
-
-// const chatPromptList = require('./js/main');
-
-import chatPromptList from './js/main.js'
-
-console.log(chatPromptList)
-
 const openai = new OpenAI();
 
 async function main() {
@@ -25,7 +38,6 @@ async function main() {
     ]
   })
   // console.log(response.choices[0].message.content)
-  console.log(chatPromptList)
 }
 
 main()
