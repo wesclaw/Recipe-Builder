@@ -1,5 +1,6 @@
 // 
 const WebSocket = require('ws')
+
 const wss = new WebSocket.Server({port:3000})
 
 wss.on('connection', ws => {
@@ -8,7 +9,8 @@ wss.on('connection', ws => {
   ws.on('message', data => {
     console.log(`${data}`)
 
-    ws.send(data)    
+    // ws.send(data)   
+    // send the data to user content?
   })
 
   ws.on('close',()=>{
@@ -33,12 +35,15 @@ async function main() {
       },
       {
         role: 'user',
-        content: 'apples, sugar, salt, peanuts, apple, peanut',
+        // content: 'apples, sugar, salt, peanuts, apple, peanut',
+        content: data,
       },
     ]
   })
-  // console.log(response.choices[0].message.content)
+  console.log(response.choices[0].message.content)
 }
+
+// module.exports = main
 
 main()
 

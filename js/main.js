@@ -1,23 +1,25 @@
 // had to make this 2 dots for it to show on github pages. not sure why...
 import ingredients from '../database/database.js'
 
+// import main from './index.cjs'
+
+// main();
+
 const wrapperForBtns = document.querySelector('.wrapper-for-buttons')
 const itemsList = document.querySelector('.item-list');
 const form = document.getElementById('form')
 const input = document.querySelector('.inputSearch')
+const recipeBtn = document.querySelector('.recipeBtn')
 
 let chatPromptList = []
 
 // 
 const ws = new WebSocket('ws://localhost:3000');
-
-ws.addEventListener('open', sendArrayData)
-
+// should be wss for production
 
 function sendArrayData() {
   ws.send(chatPromptList)
 }
-
 
 function removeItem(item) {
   const index = chatPromptList.indexOf(item);
@@ -27,26 +29,7 @@ function removeItem(item) {
   }
 }
 
-
-
-// ws.addEventListener('message', ({ data }) => {
-//   if (typeof data === 'string') {
-//     console.log(data);
-//   } else if (data instanceof Blob) {
-//     // Handle binary data (e.g., convert to a readable format)
-//     const reader = new FileReader();
-//     reader.onload = function(event) {
-//       console.log(event.target.result);
-//     };
-//     reader.readAsText(data);
-//   }
-// });
-
-
-
 //
-
-
 
 function generateTopIngredients(ingred) { 
   for(let i=0;i<50;i++){
@@ -79,7 +62,7 @@ function generateTopIngredients(ingred) {
     const ranBtn = document.createElement('button')
     ranBtn.classList.add('ranBtn')
     ranBtn.innerHTML = `Generate More <img class='ranBtnImg' src='otherImages/dice.png'></img>`
-    wrapperForBtns.insertBefore(ranBtn, ingred)    
+    wrapperForBtns.insertBefore(ranBtn, ingred)   
 }
 
 function addToList(p_el, img_el) {
@@ -101,6 +84,9 @@ function addToList(p_el, img_el) {
   removeIngredients()
 
   console.log(chatPromptList) ////where i can see it being added to array
+  // 
+
+  disableAnEnableBtn()
 }
 
 function removeIngredients() {
@@ -111,10 +97,23 @@ function removeIngredients() {
         item.remove()
         removeFromArray(item)
         // removing from server
-        removeItem(item)
+        removeItem()
+
+        // checkArrayAndMakeBtn()///checking to see if there are two or more items in the array then making recipe btn
+        disableAnEnableBtn()
       }
     })
   })
+}
+
+function disableAnEnableBtn(){
+  const item_els = document.querySelectorAll('.item_el')
+
+  if(item_els.length>2){
+    recipeBtn.disabled = false
+  }else {
+    recipeBtn.disabled = true
+  }
 }
 
 function removeFromArray(item) {
@@ -175,7 +174,4 @@ generateTopIngredients()
 
 form.addEventListener('submit', submitForm)
 
-
-
-
-
+recipeBtn.addEventListener('click', sendArrayData)
