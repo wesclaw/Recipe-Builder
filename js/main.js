@@ -1,10 +1,6 @@
 // had to make this 2 dots for it to show on github pages. not sure why...
 import ingredients from '../database/database.js'
 
-// import main from './index.cjs'
-
-// main();
-
 const wrapperForBtns = document.querySelector('.wrapper-for-buttons')
 const itemsList = document.querySelector('.item-list');
 const form = document.getElementById('form')
@@ -21,15 +17,17 @@ function sendArrayData() {
   ws.send(chatPromptList)
 }
 
-function removeItem(item) {
-  const index = chatPromptList.indexOf(item);
-  if (index !== -1) {
-    chatPromptList.splice(index, 1);
-    sendArrayData();
-  }
-}
+// function removeItem(item) {
+//   const index = chatPromptList.indexOf(item);
+//   if (index !== -1) {
+//     chatPromptList.splice(index, 1);
+//     sendArrayData();
+//   }
+// }
 
 //
+
+
 
 function generateTopIngredients(ingred) { 
   for(let i=0;i<50;i++){
@@ -54,7 +52,7 @@ function generateTopIngredients(ingred) {
       addToList(p_el, img_el)
 
       // the function here sends the filled array to the server 
-      sendArrayData()
+      // sendArrayData()
       // 
     })
   }
@@ -96,8 +94,9 @@ function removeIngredients() {
       if(e.target.tagName==='I'){
         item.remove()
         removeFromArray(item)
+
         // removing from server
-        removeItem()
+        // removeItem()
 
         // checkArrayAndMakeBtn()///checking to see if there are two or more items in the array then making recipe btn
         disableAnEnableBtn()
@@ -108,8 +107,7 @@ function removeIngredients() {
 
 function disableAnEnableBtn(){
   const item_els = document.querySelectorAll('.item_el')
-
-  if(item_els.length>2){
+  if(item_els.length>3){
     recipeBtn.disabled = false
   }else {
     recipeBtn.disabled = true
@@ -166,8 +164,9 @@ function submitForm(e) {
   console.log(chatPromptList)
 
   // the function here sends the filled array to the server 
-  sendArrayData()
+  // sendArrayData()
   // 
+  disableAnEnableBtn()
 }
 
 generateTopIngredients()
@@ -175,3 +174,6 @@ generateTopIngredients()
 form.addEventListener('submit', submitForm)
 
 recipeBtn.addEventListener('click', sendArrayData)
+
+
+
