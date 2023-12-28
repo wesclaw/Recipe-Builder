@@ -154,6 +154,17 @@ h1{
   grid-template-columns: 1fr 1fr;
 }
 
+.new-item-list{
+  margin: auto;
+  font-size: 1.2rem;
+  color: rgb(26, 24, 24);
+  font-weight: bold;
+  max-width: 600px;
+  line-height: 1.2rem;
+  border: 10px solid rgba(196, 26, 26, 0.315);
+  padding: 20px;
+}
+
 .item_el{
   height: 50px;
   display: flex;

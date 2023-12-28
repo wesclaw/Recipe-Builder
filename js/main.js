@@ -9,6 +9,8 @@ const recipeBtn = document.querySelector('.recipeBtn')
 
 let chatPromptList = []
 
+
+
 // 
 const ws = new WebSocket('ws://localhost:3000');
 // should be wss for production
@@ -17,15 +19,20 @@ function sendArrayData() {
   ws.send(chatPromptList)
 }
 
-// function removeItem(item) {
-//   const index = chatPromptList.indexOf(item);
-//   if (index !== -1) {
-//     chatPromptList.splice(index, 1);
-//     sendArrayData();
-//   }
-// }
+ws.onmessage = (event) => {
+  const responseData = event.data;
+  console.log('Received response from server:', responseData);
 
-//
+  itemsList.innerHTML = responseData
+  itemsList.classList.remove('item-list')
+  itemsList.classList.add('new-item-list')
+
+ 
+
+  // Handle the response data as needed in your application
+  // For example, you might update the UI or perform other actions
+};
+
 
 
 
@@ -95,10 +102,10 @@ function removeIngredients() {
         item.remove()
         removeFromArray(item)
 
-        // removing from server
         // removeItem()
 
-        // checkArrayAndMakeBtn()///checking to see if there are two or more items in the array then making recipe btn
+        // checkArrayAndMakeBtn()
+
         disableAnEnableBtn()
       }
     })
@@ -163,7 +170,6 @@ function submitForm(e) {
 
   console.log(chatPromptList)
 
-  // the function here sends the filled array to the server 
   // sendArrayData()
   // 
   disableAnEnableBtn()
@@ -176,4 +182,14 @@ form.addEventListener('submit', submitForm)
 recipeBtn.addEventListener('click', sendArrayData)
 
 
+
+// function removeItem(item) {
+//   const index = chatPromptList.indexOf(item);
+//   if (index !== -1) {
+//     chatPromptList.splice(index, 1);
+//     sendArrayData();
+//   }
+// }
+
+//
 
