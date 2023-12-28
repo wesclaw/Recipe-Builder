@@ -20,12 +20,12 @@ ws.onmessage = (event) => {
   const responseData = event.data;
   console.log('Received response from server:', responseData);
 
-  itemsList.innerHTML = `<div class='module-outer'>
-  
-  <div class='new-item-list'>
-  <i class="fa-solid fa-xmark x-mark"></i>
-  ${responseData}
-  </div>
+  itemsList.innerHTML = 
+  `<div class='module-outer'>
+    <div class='new-item-list'>
+      <i class="fa-solid fa-xmark x-mark"></i>
+      ${responseData}
+    </div>
   </div>`
 
   window.addEventListener('click',e=>{
