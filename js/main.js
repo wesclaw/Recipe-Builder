@@ -8,9 +8,6 @@ const input = document.querySelector('.inputSearch')
 const recipeBtn = document.querySelector('.recipeBtn')
 
 let chatPromptList = []
-
-
-
 // 
 const ws = new WebSocket('ws://localhost:3000');
 // should be wss for production
@@ -23,18 +20,26 @@ ws.onmessage = (event) => {
   const responseData = event.data;
   console.log('Received response from server:', responseData);
 
-  itemsList.innerHTML = responseData
-  itemsList.classList.remove('item-list')
-  itemsList.classList.add('new-item-list')
+  itemsList.innerHTML = `<div class='module-outer'>
+  
+  <div class='new-item-list'>
+  <i class="fa-solid fa-xmark x-mark"></i>
+  ${responseData}
+  </div>
+  </div>`
 
- 
+  window.addEventListener('click',e=>{
+    if(e.target.tagName==='I'){
+      console.log('delete')
+      const module = document.querySelector('.module-outer')
+      
+      window.location.reload()
+    }
+  })
 
   // Handle the response data as needed in your application
   // For example, you might update the UI or perform other actions
 };
-
-
-
 
 function generateTopIngredients(ingred) { 
   for(let i=0;i<50;i++){
@@ -57,10 +62,6 @@ function generateTopIngredients(ingred) {
     ingred.addEventListener('click',(e)=>{
       ingred.style.display = 'none'
       addToList(p_el, img_el)
-
-      // the function here sends the filled array to the server 
-      // sendArrayData()
-      // 
     })
   }
   ///making the generate more btn/////
@@ -101,11 +102,6 @@ function removeIngredients() {
       if(e.target.tagName==='I'){
         item.remove()
         removeFromArray(item)
-
-        // removeItem()
-
-        // checkArrayAndMakeBtn()
-
         disableAnEnableBtn()
       }
     })
@@ -116,10 +112,16 @@ function disableAnEnableBtn(){
   const item_els = document.querySelectorAll('.item_el')
   if(item_els.length>3){
     recipeBtn.disabled = false
+    recipeBtn.classList.add('recipeBtn')
+    recipeBtn.classList.remove('recipeBtnPartOne')
   }else {
     recipeBtn.disabled = true
+    recipeBtn.classList.add('recipeBtnPartOne')
+    recipeBtn.classList.remove('recipeBtn')
   }
 }
+
+disableAnEnableBtn()
 
 function removeFromArray(item) {
   const getText = item.textContent;
@@ -146,12 +148,13 @@ function submitForm(e) {
   const img_el = document.createElement('img')
   img_el.classList.add('ingredImage')
 
+  // change this to match the first letters. strawberries is the same as strawberry, etc
   for (let i = 0; i < ingredients.length; i++) {
     if (inputValue.toLowerCase().includes(ingredients[i].name.toLowerCase())) {
       img_el.src = ingredients[i].image;
     }
   }
-    
+    /////////////////////////////
   const x_tag = document.createElement('span')
   x_tag.classList.add('x_tag')
   x_tag.innerHTML = `<i class="fa-solid fa-xmark"></i>`

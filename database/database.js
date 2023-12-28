@@ -14,7 +14,7 @@ const ingredients = [
   { name: 'Soy Sauce', image: 'images/soysauce.png' },
   { name: 'Tomato', image: 'images/tomato.png' },
   { name: 'Bell Pepper', image: 'images/bellpepper.png' },
-  { name: 'Lemon Juice', image: 'images/lemon.png' },
+  { name: 'Lemon', image: 'images/lemon.png' },
   { name: 'Garlic', image: 'images/garlic.png' },
   { name: 'Wine', image: 'images/wine.png' },
   { name: 'Corn', image: 'images/corn.png' },
@@ -96,6 +96,9 @@ const ingredients = [
   { name: 'Gouda Cheese', image: 'images/goudacheese.png' },
   { name: 'Hummus', image: 'images/hummus.png' },
   { name: 'Chili Pepper', image: 'images/chilipepper.png' },
+  { name: 'Eggplant', image: 'images/eggplant.png' },
+  { name: 'Orange', image: 'images/orange.png' },
+  { name: 'Pear', image: 'images/pear.png' },
 ];
 
 export default ingredients

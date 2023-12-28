@@ -41,7 +41,7 @@ h1{
 }
 
 .inputSearch:focus{
-  border: 2px solid rgba(28, 185, 177, 0.863);;
+  border: 2px solid rgba(28, 185, 177, 0.863);
 }
 
 #form{
@@ -148,22 +148,59 @@ h1{
 }
 
 .item-list{
-  gap: 5px;
+  gap: 1px;
   min-height: 50px;
   display:grid;
   grid-template-columns: 1fr 1fr;
 }
 
+/* //////////////////////////////// */
+
 .new-item-list{
   margin: auto;
+  background-color: ghostwhite;
   font-size: 1.2rem;
   color: rgb(26, 24, 24);
   font-weight: bold;
-  max-width: 600px;
-  line-height: 1.2rem;
-  border: 10px solid rgba(196, 26, 26, 0.315);
-  padding: 20px;
+  max-width: 800px;
+  line-height: 2rem;
+  border-radius: 20px;
+  position: relative;
+  padding: 40px;
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.342);
 }
+
+.module-outer{
+  margin: auto;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.562);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;  
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);  
+}
+
+.x-mark{
+  color: rgba(0, 0, 0, 0.753);
+  font-size: 2rem;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.x-mark:hover{
+  transform: rotate(360deg);
+  transition: 1s;
+}
+
+/* ///////////////////////////// */
 
 .item_el{
   height: 50px;
@@ -208,11 +245,56 @@ h1{
   width: 30px;
 }
 
-.recipeBtn{
-  padding: 10px;
+/* /// */
+
+.recipeBtnPartOne{
+  opacity: 40%;
+  background-image: linear-gradient(to right, #FF512F 0%, #F09819  51%, #FF512F  100%);
+  margin: 10px;
+  padding: 15px 45px;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  transition: 1s;
+  cursor:not-allowed;
 }
+
+         
+.recipeBtn {
+  background-image: linear-gradient(to right, #FF512F 0%, #F09819  51%, #FF512F  100%);
+  margin: 10px;
+  padding: 15px 45px;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  /* box-shadow: 0 0 20px #eee; */
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.301);
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.329);
+  font-weight: bold;
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+.recipeBtn:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+/* /////// */
 
 .holder{
   text-align: center;
@@ -241,6 +323,11 @@ h1{
     gap: 1px;
     grid-template-columns: 1fr;
   }
+  /* /////////////////////// */
+  .new-item-list{
+    width: 95vw;
+  }
+  /* ///////////////////////// */
 }
 
 
