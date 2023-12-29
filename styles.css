@@ -158,7 +158,8 @@ h1{
 
 .new-item-list{
   margin: auto;
-  background-color: ghostwhite;
+  /* background-color: ghostwhite; */
+  background-color: #FFE9A2;
   font-size: 1.1rem;
   color: rgb(26, 24, 24);
   font-weight: bold;
