@@ -16,11 +16,11 @@ wss.on('connection', (ws) => {
 async function main(data, ws) {
   try {
 
-    const loadingText = 'Loading...just wait'
+    const loadingText = 'Loading...(This may take 5 seconds of your life)'
 
     ws.send(loadingText)
 
-    console.log('loading....just wait');
+    console.log('loading....(This may take 5 seconds of your life)');
     
     const response = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo',

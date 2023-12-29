@@ -8,7 +8,7 @@ const input = document.querySelector('.inputSearch')
 const recipeBtn = document.querySelector('.recipeBtn')
 
 let chatPromptList = []
-// 
+
 const ws = new WebSocket('ws://localhost:3000');
 // should be wss for production
 
@@ -16,17 +16,30 @@ function sendArrayData() {
   ws.send(chatPromptList)
 }
 
-ws.onmessage = (event) => {
-  const responseData = event.data;
-  console.log('Received response from server:', responseData);
+ws.onmessage = (event) => {  
+  const responseData = event.data
 
-  itemsList.innerHTML = 
-  `<div class='module-outer'>
-    <div class='new-item-list'>
-      <i class="fa-solid fa-xmark x-mark"></i>
-      ${responseData}
-    </div>
-  </div>`
+  itemsList.innerHTML = `
+  <div class='module-outer'>
+
+
+  <div class='new-item-list'>
+
+  
+
+  <i class="fa-solid fa-xmark x-mark"></i>
+  <pre>${responseData}</pre>
+
+  
+
+  </div>
+
+
+
+  </div>
+  `
+
+  console.log('Received response from server:', responseData);
 
   window.addEventListener('click',e=>{
     if(e.target.tagName==='I'){
@@ -91,7 +104,6 @@ function addToList(p_el, img_el) {
 
   console.log(chatPromptList) ////where i can see it being added to array
   // 
-
   disableAnEnableBtn()
 }
 
@@ -173,8 +185,6 @@ function submitForm(e) {
 
   console.log(chatPromptList)
 
-  // sendArrayData()
-  // 
   disableAnEnableBtn()
 }
 
