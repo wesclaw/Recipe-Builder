@@ -14,7 +14,7 @@ wss.on('connection', (ws) => {
 
 async function main(data, ws) {
   try {
-    const loadingText = 'Loading...(This may take 5 seconds of your life)'
+    const loadingText = 'Finding recipes...'
 
     ws.send(loadingText)
 
@@ -42,6 +42,8 @@ async function main(data, ws) {
     ws.send('Error processing request');
   }
 }
+
+
 
 
 

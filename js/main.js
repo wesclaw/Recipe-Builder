@@ -19,24 +19,62 @@ function sendArrayData() {
 ws.onmessage = (event) => {  
   const responseData = event.data
 
-  itemsList.innerHTML = `
-  <div class='module-outer'>
-    <div class='new-item-list'>
-      <i class="fa-solid fa-xmark x-mark"></i>
-      <pre>${responseData}</pre>
-    </div>
-  </div>
-  `
+  // 
+  const body_el = document.querySelector('body')
+  
+  const module_outer = document.createElement('div')
+  module_outer.classList.add('module-outer')
+  
+  const new_item_list = document.createElement('div')
+  new_item_list.classList.add('new-item-list')
+ 
+  const i_tag = document.createElement('i')
+  i_tag.classList.add('fa-solid', 'fa-xmark', 'x-mark')
+
+  const pre_tag = document.createElement('pre')
+
+  body_el.append(module_outer)
+  module_outer.append(new_item_list)
+  new_item_list.append(i_tag)
+  new_item_list.append(pre_tag)
+
+  pre_tag.textContent = responseData
+
+  
+
+  /////////////////
+
+  // itemsList.innerHTML = `
+  // <div class='module-outer'>
+  //   <div class='new-item-list'>
+  //     <i class="fa-solid fa-xmark x-mark"></i>
+  //     <pre>${responseData}</pre>
+  //   </div>
+  // </div>`
+
+  ///////////////////////
 
   window.addEventListener('click',e=>{
     if(e.target.tagName==='I'){
-      const module = document.querySelector('.module-outer')
+      // const module = document.querySelector('.module-outer')
       window.location.reload()
     }
   })
   // Handle the response data as needed in your application
   // For example, you might update the UI or perform other actions
 };
+
+
+
+
+
+
+
+
+
+
+
+
 
 function generateTopIngredients(ingred) { 
   for(let i=0;i<50;i++){
