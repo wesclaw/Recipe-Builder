@@ -27,17 +27,13 @@ ws.onmessage = (event) => {
     </div>
   </div>
   `
-  console.log('Received response from server:', responseData);
 
   window.addEventListener('click',e=>{
     if(e.target.tagName==='I'){
-      console.log('delete')
       const module = document.querySelector('.module-outer')
-      
       window.location.reload()
     }
   })
-
   // Handle the response data as needed in your application
   // For example, you might update the UI or perform other actions
 };

@@ -4,6 +4,13 @@
   box-sizing: border-box;
 }
 
+
+.outer-bar{
+  min-width: 10px;
+  height: 20px;
+  background-color: rgb(175, 173, 173);
+}
+
 body{
   background-color: ghostwhite;
   font-family: sans-serif;
