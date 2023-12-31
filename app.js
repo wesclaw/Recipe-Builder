@@ -9,12 +9,13 @@ wss.on('connection', (ws) => {
   ws.on('message', (data) => {
     const getString = data.toString()
     main(getString, ws);
+    console.log(getString)
   });
 });
 
 async function main(data, ws) {
   try {
-    const loadingText = 'Finding recipes...'
+    const loadingText = `<div class='wrap'><img src="otherImages/pot.png" class="pot"></img>Finding a recipe...</div>`;
 
     ws.send(loadingText)
 
@@ -36,7 +37,6 @@ async function main(data, ws) {
 
     ws.send(responseData);
 
-    // console.log(responseData);
   } catch (error) {
     console.error('Error:', error.message);
     ws.send('Error processing request');
