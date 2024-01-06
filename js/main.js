@@ -16,7 +16,7 @@ import ingredients from '../database/database.js'
   engine: engine,
   options: {
     // width: 500,
-    // height: 400,
+    // height: 500,
     width: window.innerWidth,
     height: window.innerHeight,
     wireframes: false,
@@ -24,13 +24,11 @@ import ingredients from '../database/database.js'
   },
 });
 
-const boxWidth = 340; // Width of the rectangles
+const boxWidth = 330; // Width of the rectangles
 
-const bowl = Bodies.rectangle(window.innerWidth / 2, window.innerHeight / 2 + 160, boxWidth, 10, { isStatic: true, render: { fillStyle: 'transparent' } });
-const rightEdge = Bodies.rectangle(window.innerWidth / 2 + boxWidth / 2, window.innerHeight / 2 + 35, 10, 250, { isStatic: true, render: { fillStyle: 'transparent' } })
-const leftEdge = Bodies.rectangle(window.innerWidth / 2 - boxWidth / 2, window.innerHeight / 2 + 35, 10, 250, { isStatic: true, render: { fillStyle: 'transparent' } });
-// const leftEdge = Bodies.rectangle(window.innerWidth / 2 - boxWidth / 2, window.innerHeight / 2, 10, 250, { isStatic: true, render: { fillStyle: 'black' } });
-// const rightEdge = Bodies.rectangle(window.innerWidth / 2 + boxWidth / 2, window.innerHeight / 2, 10, 250, { isStatic: true, render: { fillStyle: 'black' } });
+const bowl = Bodies.rectangle(window.innerWidth / 2, window.innerHeight / 2 + 155, boxWidth, 10, { isStatic: true, render: { fillStyle: 'black' } });
+const rightEdge = Bodies.rectangle(window.innerWidth / 2 + boxWidth / 2, window.innerHeight / 2 + 45, 10, 250, { isStatic: true, render: { fillStyle: 'black' } })
+const leftEdge = Bodies.rectangle(window.innerWidth / 2 - boxWidth / 2, window.innerHeight / 2 + 45, 10, 250, { isStatic: true, render: { fillStyle: 'black' } });
 
 const pearImage = new Image();
 pearImage.src = 'images/pear.png';

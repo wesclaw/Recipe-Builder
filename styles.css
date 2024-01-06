@@ -7,10 +7,7 @@
 canvas{
   position: absolute !important;
   top: 0 !important;
-  /* z-index: -1 !important; */
-  /* background-color: red !important; */
-  overflow: auto !important;
-  /* pointer-events: none !important;   */
+  z-index: -1 !important;
 } 
 
 body{
@@ -27,8 +24,6 @@ body{
   align-items: center;
   gap: 10px;
 }
-
-
 
 /* this is the loading animation icon */
 
@@ -71,7 +66,8 @@ h1{
   min-height: 165px;
   overflow: auto;
   border: 5px dashed;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   z-index: 1 !important;
   position: relative;
 }
@@ -99,7 +95,7 @@ h1{
   justify-content: start;
   align-items: center;
   position: relative;
-  z-index: 1;
+  /* z-index: 1; */
 }
 
 .submitBtn{
@@ -111,6 +107,7 @@ h1{
   border: none;
   outline: none;
   color: rgb(28, 185, 178);
+  /* z-index: 2; */
 }
 
 .container {
@@ -185,15 +182,14 @@ h1{
   min-height: 50px;
   display:grid;
   grid-template-columns: 1fr 1fr;
-  z-index: 2;
-  position: relative;
+  /* z-index: 2; */
+  /* position: relative; */
 }
 
 /* //////////////////////////////// */
 
 .new-item-list{
   margin: auto;
-  /* background-color: ghostwhite; */
   background-color: #FFE9A2;
   font-size: 1.1rem;
   color: rgb(26, 24, 24);
