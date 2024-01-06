@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+canvas{
+  /* background-color: red !important; */
+  position: absolute !important;
+  top: 0;
+}
+
 body{
   background-color: ghostwhite;
   font-family: sans-serif;
@@ -11,6 +17,40 @@ body{
   font-weight: 100;
   overflow-x: hidden;
 }
+
+
+
+/* 
+
+.wrapper-for-bowl{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  z-index: -22;
+  position: absolute;
+}
+
+
+.potImage{
+  position: absolute;
+
+}
+
+.pot-bg{
+  position: relative;
+  z-index: -1;
+  height: 220px;
+  background-color: lime;
+
+} 
+
+
+ */
+
+
+
 
 .wrap{
   display: flex;
