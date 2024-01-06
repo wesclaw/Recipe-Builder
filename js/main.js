@@ -1,80 +1,129 @@
-// had to make this 2 dots for it to show on github pages. not sure why...
+// // had to make this 2 dots for it to show on github pages. not sure why...
 import ingredients from '../database/database.js'
 
-/////////////
+// /////////////
+  const Engine = Matter.Engine,
+  Render = Matter.Render,
+  World = Matter.World,
+  Bodies = Matter.Bodies,
+  MouseConstraint = Matter.MouseConstraint,
+  Mouse = Matter.Mouse;
 
+  const engine = Engine.create();
 
-//   const Engine = Matter.Engine,
-//   Render = Matter.Render,
-//   World = Matter.World,
-//   Bodies = Matter.Bodies,
-//   MouseConstraint = Matter.MouseConstraint,
-//   Mouse = Matter.Mouse;
+  const render = Render.create({
+  element: document.body,
+  engine: engine,
+  options: {
+    // width: 500,
+    // height: 400,
+    width: window.innerWidth,
+    height: window.innerHeight,
+    wireframes: false,
+    background: 'transparent',
+  },
+});
 
+const boxWidth = 340; // Width of the rectangles
 
-//   const engine = Engine.create();
-
-
-//   const render = Render.create({
-//   element: document.body,
-//   engine: engine,
-//   options: {
-//     // width: 500,
-//     // height: 400,
-//     width: window.innerWidth,
-//     height: window.innerHeight,
-//     wireframes: false,
-//     background: 'transparent',
-//   },
-// });
-
-
-// const boxWidth = 340; // Width of the rectangles
-
-
-// const bowl = Bodies.rectangle(window.innerWidth / 2, window.innerHeight / 2 + 130, boxWidth, 10, { isStatic: true, render: { fillStyle: 'black' } });
-// const rightEdge = Bodies.rectangle(window.innerWidth / 2 + boxWidth / 2, window.innerHeight / 2, 10, 250, { isStatic: true, render: { fillStyle: 'black' } });
+const bowl = Bodies.rectangle(window.innerWidth / 2, window.innerHeight / 2 + 160, boxWidth, 10, { isStatic: true, render: { fillStyle: 'transparent' } });
+const rightEdge = Bodies.rectangle(window.innerWidth / 2 + boxWidth / 2, window.innerHeight / 2 + 35, 10, 250, { isStatic: true, render: { fillStyle: 'transparent' } })
+const leftEdge = Bodies.rectangle(window.innerWidth / 2 - boxWidth / 2, window.innerHeight / 2 + 35, 10, 250, { isStatic: true, render: { fillStyle: 'transparent' } });
 // const leftEdge = Bodies.rectangle(window.innerWidth / 2 - boxWidth / 2, window.innerHeight / 2, 10, 250, { isStatic: true, render: { fillStyle: 'black' } });
+// const rightEdge = Bodies.rectangle(window.innerWidth / 2 + boxWidth / 2, window.innerHeight / 2, 10, 250, { isStatic: true, render: { fillStyle: 'black' } });
+
+const pearImage = new Image();
+pearImage.src = 'images/pear.png';
+
+const eggplantImage = new Image();
+eggplantImage.src = 'images/eggplant.png';
+
+const initialX = window.innerWidth / 2;
+const initialY = -80;
+
+const fallingPear = Bodies.rectangle(initialX, initialY, 60, 60, {
+  render: {
+    sprite: {
+      texture: pearImage.src,
+      xScale: 0.2,
+      yScale: 0.2,
+    },
+  },
+  restitution: 0.8,
+  angle: Math.random() * Math.PI,
+  friction: 0.7,
+});
+
+World.add(engine.world, [bowl, rightEdge, leftEdge, fallingPear]);
+
+const mouse = Mouse.create(render.canvas);
+const mouseConstraint = MouseConstraint.create(engine, {
+  mouse: mouse,
+});
+
+World.add(engine.world, mouseConstraint);
+engine.world.gravity.y = 0.5;
+Engine.run(engine);
+Render.run(render);
 
 
-// const pearImage = new Image();
-// pearImage.src = 'images/pear.png';
 
 
-// const eggplantImage = new Image();
-// eggplantImage.src = 'images/eggplant.png';
+//////////////////////////////////////////////////////
 
 
-// const initialX = window.innerWidth / 2;
-// const initialY = -80;
 
 
-// const fallingPear = Bodies.rectangle(initialX, initialY, 60, 60, {
-//   render: {
-//     sprite: {
-//       texture: pearImage.src,
-//       xScale: 0.2,
-//       yScale: 0.2,
-//     },
-//   },
-//   restitution: 0.8,
-//   angle: Math.random() * Math.PI,
-//   friction: 0.7,
-// });
-
-// World.add(engine.world, [bowl, rightEdge, leftEdge, fallingPear]);
 
 
-// const mouse = Mouse.create(render.canvas);
-// const mouseConstraint = MouseConstraint.create(engine, {
-//   mouse: mouse,
-// });
 
 
-// World.add(engine.world, mouseConstraint);
-// engine.world.gravity.y = 0.5;
-// Engine.run(engine);
-// Render.run(render);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -139,7 +188,7 @@ ws.onmessage = (event) => {
 };
 
 function generateTopIngredients(ingred) { 
-  for(let i=0;i<50;i++){
+  for(let i=0;i<60;i++){
     const ingred = document.createElement('div')
     ingred.classList.add('ingred')
 
