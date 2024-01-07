@@ -24,11 +24,11 @@ function setup() {
     },
   });
 
-  const boxWidth = 330;
+  const boxWidth = 320;
 
-  const bowl = Bodies.rectangle(window.innerWidth / 2, window.innerHeight / 2 + 155, boxWidth, 15, { isStatic: true, render: { fillStyle: 'black' } });
-  const rightEdge = Bodies.rectangle(window.innerWidth / 2 + boxWidth / 2, window.innerHeight / 2 + 45, 15, 250, { isStatic: true, render: { fillStyle: 'black' } });
-  const leftEdge = Bodies.rectangle(window.innerWidth / 2 - boxWidth / 2, window.innerHeight / 2 + 45, 15, 250, { isStatic: true, render: { fillStyle: 'black' } });
+  const bowl = Bodies.rectangle(window.innerWidth / 2, window.innerHeight / 2 + 155, boxWidth, 15, { isStatic: true, render: { fillStyle: 'transparent' } });
+  const rightEdge = Bodies.rectangle(window.innerWidth / 2 + boxWidth / 2, window.innerHeight / 2 + 45, 15, 250, { isStatic: true, render: { fillStyle: 'transparent' } });
+  const leftEdge = Bodies.rectangle(window.innerWidth / 2 - boxWidth / 2, window.innerHeight / 2 + 45, 15, 250, { isStatic: true, render: { fillStyle: 'transparent' } });
 
   World.add(engine.world, [bowl, rightEdge, leftEdge]);
 
@@ -45,8 +45,6 @@ function setup() {
 }
 
 setup();
-
-////////////////////////////
 
 const wrapperForBtns = document.querySelector('.wrapper-for-buttons')
 const itemsList = document.querySelector('.item-list');
@@ -126,9 +124,7 @@ function generateTopIngredients(ingred) {
       ingred.style.display = 'none'
       addToList(p_el, img_el)
 
-      // THIS IS WHERE I CALL MY FUNCION FOR MATTER JS.
       createPear(p_el)
-      ///////////////////////////////////////////////////////////////////////////
     })
   }
   ///making the generate more btn/////
@@ -140,23 +136,24 @@ function generateTopIngredients(ingred) {
 
 ///////////////////////////////////////////////////
 
+let foodArray = new Map()
 
 function createPear(p_el) {
   const pearImage = new Image();
 
   let p_text = p_el.textContent || p_el.innerText;
-  
   p_text = p_text.toLowerCase();
 
   pearImage.src = 'images/' + p_text + '.png';
 
-  console.log(pearImage)
+  // Create a fallingPear variable
+  let fallingPear;
 
   pearImage.onload = function () {
     const initialX = window.innerWidth / 2;
     const initialY = -80;
 
-    const fallingPear = Bodies.rectangle(initialX, initialY, 60, 60, {
+    fallingPear = Bodies.rectangle(initialX, initialY, 60, 60, {
       render: {
         sprite: {
           texture: pearImage.src,
@@ -169,28 +166,45 @@ function createPear(p_el) {
       friction: 0.7,
     });
 
+    // Add fallingPear to the Matter.js world
     World.add(engine.world, fallingPear);
+
+    // Add both p_text and fallingPear to the foodArray Map
+    foodArray.set(p_text, fallingPear);
 
     // Assuming 'render' is the Render object created with Matter.js
     Render.lookAt(render, {
       min: { x: 0, y: 0 },
-      max: { x: window.innerWidth, y: window.innerHeight }
+      max: { x: window.innerWidth, y: window.innerHeight },
     });
   };
 
   pearImage.onerror = function (error) {
     console.error('Error loading image:', p_el, error);
   };
+
+  // Return both pearImage and fallingPear
+  return { pearImage, fallingPear };
 }
 
+function removeTheFood(getText) {
+  // Convert getText to lowercase
+  const lowerCaseText = getText.toLowerCase();
+  // Check if the lowercased text is in the foodArray Map
+  if (foodArray.has(lowerCaseText)) {
+    // Retrieve the fallingPear from the foodArray Map
+    const fallingPear = foodArray.get(lowerCaseText);
 
+    // Remove the fallingPear from the Matter.js world
+    World.remove(engine.world, fallingPear);
 
+    foodArray.delete(lowerCaseText);
 
-
-
-
-
-////////////////////////////////////////////
+    console.log(`Removed fallingPear associated with ${lowerCaseText}`);
+  } else {
+    console.log(`${lowerCaseText} not found in the foodArray Map.`);
+  }
+}
 
 function addToList(p_el, img_el) {
   const div_tag = document.createElement('div')
@@ -224,9 +238,9 @@ function removeIngredients() {
         removeFromArray(item)
         disableAnEnableBtn()
 
-        ////////////////////////////////make function that searches what image has already been created and then removes that image based on the textContent
-        removeFallingImage(item.textContent)
-        ////////////////////
+        const getText = item.textContent
+
+        removeTheFood(getText)
       }
     })
   })
@@ -293,11 +307,7 @@ function submitForm(e) {
 
   removeIngredients() 
 
-   ///////////////////////////////////////////
-
    createPear(p_el)
-
-   ////////////////////////////////////////////
 
   input.value = ''
 
