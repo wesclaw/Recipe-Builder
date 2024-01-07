@@ -65,10 +65,10 @@ h1{
   max-height: 165px;
   min-height: 165px;
   overflow: auto;
-  border: 5px dashed;
+  border: 5px rgba(0, 255, 0, 0.356) dashed;
   padding-top: 10px;
   padding-bottom: 10px;
-
+  box-shadow: inset 10px 0px 5px 0px rgba(0, 0, 0, 0.123);
   scrollbar-width: thin; /* Firefox */
   scrollbar-color: darkgray lightgray; /* Firefox */
 
