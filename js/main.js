@@ -1,88 +1,12 @@
 // // had to make this 2 dots for it to show on github pages. not sure why...
 import ingredients from '../database/database.js'
 
-// /////////////
-
-
-// const Engine = Matter.Engine,
-//   Render = Matter.Render,
-//   World = Matter.World,
-//   Bodies = Matter.Bodies,
-//   MouseConstraint = Matter.MouseConstraint,
-//   Mouse = Matter.Mouse;
-
-//   const engine = Engine.create();
-
-//   const render = Render.create({
-//     element: document.body,
-//     engine: engine,
-//     options: {
-//       // width: 500,
-//       // height: 500,
-//       width: window.innerWidth,
-//       height: window.innerHeight,
-//       wireframes: false,
-//       background: 'transparent',
-//     },
-//   });
-
-
-//   const boxWidth = 330; // Width of the rectangles
-
-//  const bowl = Bodies.rectangle(window.innerWidth / 2, window.innerHeight / 2 + 155, boxWidth, 10,{   isStatic: true, render: { fillStyle: 'black' } });
-//  const rightEdge = Bodies.rectangle(window.innerWidth / 2 + boxWidth / 2, window.innerHeight / 2+   45, 10, 250, { isStatic: true, render: { fillStyle: 'black' } })
-//  const leftEdge = Bodies.rectangle(window.innerWidth / 2 - boxWidth / 2, window.innerHeight / 2+   45, 10, 250, { isStatic: true, render: { fillStyle: 'black' } });
-// const pearImage = new Image();
-//  pearImage.src = 'images/pear.png';
-
-// // const eggplantImage = new Image();
-// // eggplantImage.src = 'images/eggplant.png';
-
-// const initialX = window.innerWidth / 2;
-// const initialY = -80;
-
-// const fallingPear = Bodies.rectangle(initialX, initialY, 60, 60, {
-//   render: {
-//     sprite: {
-//       texture: pearImage.src,
-//       xScale: 0.2,
-//       yScale: 0.2,
-//     },
-//   },
-//   restitution: 0.8,
-//   angle: Math.random() * Math.PI,
-//   friction: 0.7,
-// });
-
-// World.add(engine.world, [bowl, rightEdge, leftEdge, fallingPear]);
-
-// const mouse = Mouse.create(render.canvas);
-// const mouseConstraint = MouseConstraint.create(engine, {
-//   mouse: mouse,
-// });
-
-// World.add(engine.world, mouseConstraint);
-// engine.world.gravity.y = 0.5;
-// Engine.run(engine);
-// Render.run(render);
-
-
-
-
-
-
-
-//////////////////////////////////////////////////////
-
-
-/////this is almost right so use this one 
-
 const Engine = Matter.Engine,
-  Render = Matter.Render,
-  World = Matter.World,
-  Bodies = Matter.Bodies,
-  MouseConstraint = Matter.MouseConstraint,
-  Mouse = Matter.Mouse;
+Render = Matter.Render,
+World = Matter.World,
+Bodies = Matter.Bodies,
+MouseConstraint = Matter.MouseConstraint,
+Mouse = Matter.Mouse;
 
 let engine, render, mouseConstraint;
 
@@ -102,9 +26,9 @@ function setup() {
 
   const boxWidth = 330;
 
-  const bowl = Bodies.rectangle(window.innerWidth / 2, window.innerHeight / 2 + 155, boxWidth, 10, { isStatic: true, render: { fillStyle: 'black' } });
-  const rightEdge = Bodies.rectangle(window.innerWidth / 2 + boxWidth / 2, window.innerHeight / 2 + 45, 10, 250, { isStatic: true, render: { fillStyle: 'black' } });
-  const leftEdge = Bodies.rectangle(window.innerWidth / 2 - boxWidth / 2, window.innerHeight / 2 + 45, 10, 250, { isStatic: true, render: { fillStyle: 'black' } });
+  const bowl = Bodies.rectangle(window.innerWidth / 2, window.innerHeight / 2 + 155, boxWidth, 15, { isStatic: true, render: { fillStyle: 'black' } });
+  const rightEdge = Bodies.rectangle(window.innerWidth / 2 + boxWidth / 2, window.innerHeight / 2 + 45, 15, 250, { isStatic: true, render: { fillStyle: 'black' } });
+  const leftEdge = Bodies.rectangle(window.innerWidth / 2 - boxWidth / 2, window.innerHeight / 2 + 45, 15, 250, { isStatic: true, render: { fillStyle: 'black' } });
 
   World.add(engine.world, [bowl, rightEdge, leftEdge]);
 
@@ -120,74 +44,9 @@ function setup() {
   Render.run(render);
 }
 
-
-function createPear() {
-  const pearImage = new Image();
-  pearImage.src = 'images/pear.png';
-
-  const initialX = window.innerWidth / 2;
-  const initialY = -80;
-
-  const fallingPear = Bodies.rectangle(initialX, initialY, 60, 60, {
-    render: {
-      sprite: {
-        texture: pearImage.src,
-        xScale: 0.2,
-        yScale: 0.2,
-      },
-    },
-    restitution: 0.8,
-    angle: Math.random() * Math.PI,
-    friction: 0.7,
-  });
-
-  World.add(engine.world, fallingPear);
-}
-
-// Call the setup function to initialize the simulation
 setup();
 
-// Call the createPear function after the setup function
-// createPear();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ////////////////////////////
-
 
 const wrapperForBtns = document.querySelector('.wrapper-for-buttons')
 const itemsList = document.querySelector('.item-list');
@@ -240,7 +99,7 @@ ws.onmessage = (event) => {
   window.addEventListener('click',e=>{
     if(e.target.tagName==='I'){
       window.location.reload()
-      ////maybe just remove the parent element instead of page refresh?
+      ////maybe just remove the parent element instead of page refresh?////why reload the whole page? it will tale extra longer
     }
   })
 };
@@ -267,22 +126,71 @@ function generateTopIngredients(ingred) {
       ingred.style.display = 'none'
       addToList(p_el, img_el)
 
-      // THIS IS WHERE I CALL MY FUNCION FOR MATTER JS. I PASS IN IMAGE PARAM
-
-      // const imageUrl = img_el.src;
-
-      createPear(img_el)
-
-
+      // THIS IS WHERE I CALL MY FUNCION FOR MATTER JS.
+      createPear(p_el)
       ///////////////////////////////////////////////////////////////////////////
     })
   }
   ///making the generate more btn/////
-    const ranBtn = document.createElement('button')
-    ranBtn.classList.add('ranBtn')
-    ranBtn.innerHTML = `Generate More <img class='ranBtnImg' src='otherImages/dice.png'></img>`
-    wrapperForBtns.insertBefore(ranBtn, ingred)   
+    // const ranBtn = document.createElement('button')
+    // ranBtn.classList.add('ranBtn')
+    // ranBtn.innerHTML = `Generate More <img class='ranBtnImg' src='otherImages/dice.png'></img>`
+    // wrapperForBtns.insertBefore(ranBtn, ingred)   
 }
+
+///////////////////////////////////////////////////
+
+
+function createPear(p_el) {
+  const pearImage = new Image();
+
+  let p_text = p_el.textContent || p_el.innerText;
+  
+  p_text = p_text.toLowerCase();
+
+  pearImage.src = 'images/' + p_text + '.png';
+
+  console.log(pearImage)
+
+  pearImage.onload = function () {
+    const initialX = window.innerWidth / 2;
+    const initialY = -80;
+
+    const fallingPear = Bodies.rectangle(initialX, initialY, 60, 60, {
+      render: {
+        sprite: {
+          texture: pearImage.src,
+          xScale: 0.2,
+          yScale: 0.2,
+        },
+      },
+      restitution: 0.8,
+      angle: Math.random() * Math.PI,
+      friction: 0.7,
+    });
+
+    World.add(engine.world, fallingPear);
+
+    // Assuming 'render' is the Render object created with Matter.js
+    Render.lookAt(render, {
+      min: { x: 0, y: 0 },
+      max: { x: window.innerWidth, y: window.innerHeight }
+    });
+  };
+
+  pearImage.onerror = function (error) {
+    console.error('Error loading image:', p_el, error);
+  };
+}
+
+
+
+
+
+
+
+
+////////////////////////////////////////////
 
 function addToList(p_el, img_el) {
   const div_tag = document.createElement('div')
@@ -315,6 +223,13 @@ function removeIngredients() {
         item.remove()
         removeFromArray(item)
         disableAnEnableBtn()
+
+        // 
+        // removeFallingImage(item.textContent)
+
+        console.log(item.textContent)
+        // 
+
       }
     })
   })
@@ -381,6 +296,12 @@ function submitForm(e) {
 
   removeIngredients() 
 
+   ///////////////////////////////////////////
+
+   createPear(p_el)
+
+   ////////////////////////////////////////////
+
   input.value = ''
 
   console.log(chatPromptList)
@@ -405,4 +326,12 @@ recipeBtn.addEventListener('click', sendArrayData)
 // }
 
 //
+
+
+
+
+
+
+
+
 
