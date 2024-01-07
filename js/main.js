@@ -224,12 +224,9 @@ function removeIngredients() {
         removeFromArray(item)
         disableAnEnableBtn()
 
-        // 
-        // removeFallingImage(item.textContent)
-
-        console.log(item.textContent)
-        // 
-
+        ////////////////////////////////make function that searches what image has already been created and then removes that image based on the textContent
+        removeFallingImage(item.textContent)
+        ////////////////////
       }
     })
   })
