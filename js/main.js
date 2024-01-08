@@ -24,11 +24,77 @@ function setup() {
     },
   });
 
-  const boxWidth = 320;
+  // const boxWidth = 320;
 
-  const bowl = Bodies.rectangle(window.innerWidth / 2, window.innerHeight / 2 + 155, boxWidth, 15, { isStatic: true, render: { fillStyle: 'transparent' } });
-  const rightEdge = Bodies.rectangle(window.innerWidth / 2 + boxWidth / 2, window.innerHeight / 2 + 45, 15, 250, { isStatic: true, render: { fillStyle: 'transparent' } });
-  const leftEdge = Bodies.rectangle(window.innerWidth / 2 - boxWidth / 2, window.innerHeight / 2 + 45, 15, 250, { isStatic: true, render: { fillStyle: 'transparent' } });
+  // const bowl = Bodies.rectangle(window.innerWidth / 2, window.innerHeight / 2 + 155, boxWidth, 15, { isStatic: true, render: { fillStyle: 'black' } });
+  // const rightEdge = Bodies.rectangle(window.innerWidth / 2 + boxWidth / 2, window.innerHeight / 2 + 45, 15, 250, { isStatic: true, render: { fillStyle: 'black' } });
+  // const leftEdge = Bodies.rectangle(window.innerWidth / 2 - boxWidth / 2, window.innerHeight / 2 + 45, 15, 250, { isStatic: true, render: { fillStyle: 'black' } });
+
+  // 
+
+  // const cenDiv = document.querySelector('.wrapper-for-image')
+
+  // const bowlX = cenDiv.offsetWidth / 2;
+  // const bowlY = cenDiv.offsetHeight / 2 + 445;
+  // const boxWidth = 320; // Replace with your desired box width
+  
+  // const bowl = Bodies.rectangle(bowlX, bowlY, boxWidth, 15, { isStatic: true, render: { fillStyle: 'black' } });
+  
+  // const rightEdgeX = bowlX + boxWidth / 2;
+  // const rightEdgeY = bowlY - 120; // Adjust the value based on your requirements
+  
+  // const rightEdge = Bodies.rectangle(rightEdgeX, rightEdgeY, 15, 250, { isStatic: true, render: { fillStyle: 'black' } });
+  
+  // const leftEdgeX = bowlX - boxWidth / 2;
+  // const leftEdgeY = rightEdgeY;
+  
+  // const leftEdge = Bodies.rectangle(leftEdgeX, leftEdgeY, 15, 250, { isStatic: true, render: { fillStyle: 'black' } });
+
+
+/////////////////////////////////////////////////////
+
+//   const cenDiv = document.querySelector('.wrapper-for-image');
+
+// const margin = 20; // Adjust the margin value based on your requirements
+// const boxWidth = 320; // Replace with your desired box width
+
+// const bowlX = cenDiv.offsetWidth / 2;
+// const bowlY = cenDiv.offsetHeight / 2 + 445 + margin; // Adjusted to add margin
+// const rightEdgeX = bowlX + boxWidth / 2;
+// const rightEdgeY = bowlY - 120 + margin; // Adjusted to add margin
+// const leftEdgeX = bowlX - boxWidth / 2;
+// const leftEdgeY = rightEdgeY;
+
+// const bowl = Bodies.rectangle(bowlX, bowlY, boxWidth, 15, { isStatic: true, render: { fillStyle: 'black' } });
+// const rightEdge = Bodies.rectangle(rightEdgeX, rightEdgeY, 15, 250, { isStatic: true, render: { fillStyle: 'black' } });
+// const leftEdge = Bodies.rectangle(leftEdgeX, leftEdgeY, 15, 250, { isStatic: true, render: { fillStyle: 'black' } });
+
+
+
+  // 
+
+  const cenDiv = document.querySelector('.wrapper-for-image');
+
+  const margin = 50; // Adjust the margin value based on your requirements
+  const boxWidth = 240; // Replace with your desired box width
+  
+  const bowlX = cenDiv.offsetWidth / 2;
+  const bowlY = cenDiv.offsetHeight / 2 + 415 + margin; // Adjusted to add margin
+  const rightEdgeX = bowlX + boxWidth / 2;
+  const rightEdgeY = bowlY - 120 + margin; // Adjusted to add margin
+  const leftEdgeX = bowlX - boxWidth / 2;
+  const leftEdgeY = rightEdgeY;
+  
+  const bowl = Bodies.rectangle(bowlX, bowlY, boxWidth, 15, { isStatic: true, render: { fillStyle: 'transparent' } });
+  const rightEdge = Bodies.rectangle(rightEdgeX, rightEdgeY, 15, 220, { isStatic: true, render: { fillStyle: 'transparent' } });
+  const leftEdge = Bodies.rectangle(leftEdgeX, leftEdgeY, 15, 220, { isStatic: true, render: { fillStyle: 'transparent' } });
+
+
+  // 
+
+
+
+
 
   World.add(engine.world, [bowl, rightEdge, leftEdge]);
 
@@ -161,7 +227,7 @@ function createPear(p_el) {
           yScale: 0.2,
         },
       },
-      restitution: 0.8,
+      restitution: 0.4,
       angle: Math.random() * Math.PI,
       friction: 0.7,
     });

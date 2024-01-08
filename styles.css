@@ -15,7 +15,8 @@ body{
   font-family: sans-serif;
   color: rgba(44, 39, 39, 0.712);
   font-weight: 100;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
+  overflow-y: scroll;
 }
 
 .wrap{
@@ -113,6 +114,7 @@ h1{
   justify-content: start;
   align-items: center;
   position: relative;
+  /* margin-bottom: 50px; */
 }
 
 .submitBtn{
@@ -181,10 +183,13 @@ h1{
   text-align: center;
 }
 
-/* //////////////////////////////// */
+/* //////////////////////////////////////////////////// */
 
-.topbowl {
+.wrapper-for-image{
   margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  /* background-color: rgba(0, 128, 0, 0.048); */
 }
 
 .item-list{
@@ -192,6 +197,11 @@ h1{
   min-height: 50px;
   display:grid;
   grid-template-columns: 1fr 1fr;
+}
+
+.potImage {
+  /* background-color: rgba(0, 255, 0, 0.178); */
+  width: 350px;
 }
 
 /* //////////////////////////////// */
@@ -398,8 +408,7 @@ h1{
     display: none !important;
   }
 
-  .topbowl {
-    margin-top: 50px;
+  .wrapper-for-image{
     display: none;
   }
 }
