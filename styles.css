@@ -185,9 +185,6 @@ h1{
 
 .topbowl {
   margin-top: 50px;
-  /* position: relative; */
-  /* display: flex;
-  justify-content: center; */
 }
 
 .item-list{
@@ -397,6 +394,14 @@ h1{
     width: 95vw;
   }
   /* ///////////////////////// */
+  canvas{
+    display: none !important;
+  }
+
+  .topbowl {
+    margin-top: 50px;
+    display: none;
+  }
 }
 
 
