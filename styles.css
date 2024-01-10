@@ -183,13 +183,10 @@ h1{
   text-align: center;
 }
 
-/* //////////////////////////////////////////////////// */
-
 .wrapper-for-image{
   margin-top: 50px;
   display: flex;
   justify-content: center;
-  /* background-color: rgba(0, 128, 0, 0.048); */
 }
 
 .item-list{
@@ -200,11 +197,8 @@ h1{
 }
 
 .potImage {
-  /* background-color: rgba(0, 255, 0, 0.178); */
   width: 350px;
 }
-
-/* //////////////////////////////// */
 
 .new-item-list{
   margin: auto;
@@ -323,8 +317,6 @@ h1{
   width: 30px;
 }
 
-/* /// */
-
 .recipeBtnPartOne{
   opacity: 40%;
   background-image: linear-gradient(to right, #FF512F 0%, #F09819  51%, #FF512F  100%);
@@ -365,12 +357,10 @@ h1{
 }
 
 .recipeBtn:hover {
-  background-position: right center; /* change the direction of the change here */
+  background-position: right center; 
   color: #fff;
   text-decoration: none;
 }
-
-/* /////// */
 
 .holder{
   text-align: center;
@@ -399,11 +389,11 @@ h1{
     gap: 1px;
     grid-template-columns: 1fr;
   }
-  /* /////////////////////// */
+
   .new-item-list{
     width: 95vw;
   }
-  /* ///////////////////////// */
+
   canvas{
     display: none !important;
   }
