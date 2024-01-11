@@ -85,6 +85,7 @@ ws.onmessage = (event) => {
   window.addEventListener('click',e=>{
     if(e.target.tagName==='I'){
       window.location.reload()
+      ////remove the parent element instead. dont refresh
     }
   })
 };
@@ -256,9 +257,7 @@ function removeTheFood(getText) {
     World.remove(engine.world, fallingPear);
 
     foodArray.delete(lowerCaseText);
-  } else {
-    console.log(`${lowerCaseText} not found in the foodArray Map.`);
-  }
+  } 
 }
 
 function addToList(p_el, img_el) {
@@ -339,11 +338,16 @@ function submitForm(e) {
   img_el.classList.add('ingredImage')
 
   // change this to match the first letters. strawberries is the same as strawberry, etc//////here i can make it a function and put that function in the other submit function and other functions that need the inlcudes
-  for (let i = 0; i < ingredients.length; i++) {
-    if (inputValue.toLowerCase().includes(ingredients[i].name.toLowerCase())) {
-      img_el.src = ingredients[i].image;
-    }
-  }
+
+  // for (let i = 0; i < ingredients.length; i++) {
+  //   if (inputValue.toLowerCase().includes(ingredients[i].name.toLowerCase())) {
+  //     img_el.src = ingredients[i].image;
+  //   }
+  // }
+
+/////////////////////////
+  singularAndPlural(inputValue, img_el)
+//////////////////////////
   const x_tag = document.createElement('span')
   x_tag.classList.add('x_tag')
   x_tag.innerHTML = `<i class="fa-solid fa-xmark"></i>`
@@ -354,11 +358,11 @@ function submitForm(e) {
   
   itemsList.append(div_tag)
 
-  chatPromptList.push(inputValue)///adding the inputValue into the array
+  chatPromptList.push(inputValue)
 
   removeIngredients() 
 
-   createPear(p_el)
+  createPear(p_el)
 
   input.value = ''
 
@@ -367,8 +371,17 @@ function submitForm(e) {
   disableAnEnableBtn()
 }
 
-// generateTopIngredients()
+/////////////////////////
+function singularAndPlural(inputValue, img_el){
+  for (let i = 0; i < ingredients.length; i++) {
+    if (inputValue.toLowerCase().includes(ingredients[i].name.toLowerCase())) {
+      img_el.src = ingredients[i].image;
+    }
+  }
+}
 
+// generateTopIngredients()
+///////////////////////////////
 form.addEventListener('submit', submitForm)
 
 recipeBtn.addEventListener('click', sendArrayData)
