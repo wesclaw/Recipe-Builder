@@ -89,32 +89,116 @@ ws.onmessage = (event) => {
   })
 };
 
-function generateTopIngredients(ingred) { 
-  for(let i=0;i<60;i++){
-    const ingred = document.createElement('div')
-    ingred.classList.add('ingred')
+// function generateTopIngredients() { 
+//   for(let i=0;i<60;i++){
+//     const ingred = document.createElement('div')
+//     ingred.classList.add('ingred')
 
-    const p_el = document.createElement('p')
-    p_el.textContent = ingredients[i].name
+//     const p_el = document.createElement('p')
+//     p_el.textContent = ingredients[i].name
 
-    const img_el = document.createElement('img')
-    img_el.classList.add('ingredImage')
-    img_el.src = ingredients[i].image
+//     const img_el = document.createElement('img')
+//     img_el.classList.add('ingredImage')
+//     img_el.src = ingredients[i].image
 
-    ingred.append(p_el)
-    ingred.append(img_el)
+//     ingred.append(p_el)
+//     ingred.append(img_el)
 
-    wrapperForBtns.append(ingred)
+//     wrapperForBtns.append(ingred)
 
-    ////removing the ingred top item on click
-    ingred.addEventListener('click',(e)=>{
-      ingred.style.display = 'none'
-      addToList(p_el, img_el)
+//     ////removing the ingred top item on click
+//     ingred.addEventListener('click',(e)=>{
+//       ingred.style.display = 'none'
+//       addToList(p_el, img_el)
 
-      createPear(p_el)
-    })
-  }  
+//       createPear(p_el)
+//     })
+
+//     wrapperForBtns.addEventListener("scroll",e=>{
+
+//     })
+//   }  
+// }
+
+
+
+///////////////////////////////////////
+
+
+
+function generateTopIngredients(ingredients) {
+  const batchSize = 50;
+  let currentIndex = 0;
+
+  function addIngredientEventListener(ingred, p_el, img_el) {
+    ingred.addEventListener('click', (e) => {
+      ingred.style.display = 'none';
+      addToList(p_el, img_el);
+      createPear(p_el);
+    });
+  }
+
+  function createIngredientElement(ingredient) {
+    const ingred = document.createElement('div');
+    ingred.classList.add('ingred');
+
+    const p_el = document.createElement('p');
+    p_el.textContent = ingredient.name;
+
+    const img_el = document.createElement('img');
+    img_el.classList.add('ingredImage');
+    img_el.src = ingredient.image;
+
+    ingred.append(p_el);
+    ingred.append(img_el);
+
+    addIngredientEventListener(ingred, p_el, img_el);
+
+    return ingred;
+  }
+
+  function isIngredientDisplayed(ingredient) {
+    const existingIngredients = Array.from(wrapperForBtns.getElementsByClassName('ingred'));
+    return existingIngredients.some((ingred) => ingred.textContent.trim() === ingredient.name);
+  }
+
+  function displayIngredients(startIndex, endIndex) {
+    for (let i = startIndex; i < endIndex && i < ingredients.length; i++) {
+      const ingredient = ingredients[i];
+
+      if (!isIngredientDisplayed(ingredient)) {
+        const ingredElement = createIngredientElement(ingredient);
+        wrapperForBtns.appendChild(ingredElement); 
+      }
+    }
+  }
+
+  displayIngredients(currentIndex, currentIndex + batchSize);
+
+  wrapperForBtns.addEventListener('scroll', (event) => {
+    const wrapperHeight = wrapperForBtns.clientHeight;
+    const scrollHeight = wrapperForBtns.scrollHeight;
+    const scrollTop = wrapperForBtns.scrollTop;
+
+    // Check if the user has scrolled to the bottom
+    if (scrollTop + wrapperHeight >= scrollHeight - 10) {
+      // Load the next set of ingredients
+      const startIndex = currentIndex;
+      const endIndex = currentIndex + batchSize;
+
+      // Check if there are more ingredients to display
+      if (startIndex < ingredients.length) {
+        displayIngredients(startIndex, endIndex);
+        currentIndex = endIndex;
+      }
+      event.preventDefault();
+    }
+  });
 }
+
+generateTopIngredients(ingredients); 
+
+/////////////////////////////////
 
 let foodArray = new Map()
 
@@ -123,6 +207,8 @@ function createPear(p_el) {
 
   let p_text = p_el.textContent || p_el.innerText;
   p_text = p_text.toLowerCase();
+
+  // add here the plural and singular forms of each ingredient name
 
   pearImage.src = 'images/' + p_text + '.png';
 
@@ -252,7 +338,7 @@ function submitForm(e) {
   const img_el = document.createElement('img')
   img_el.classList.add('ingredImage')
 
-  // change this to match the first letters. strawberries is the same as strawberry, etc
+  // change this to match the first letters. strawberries is the same as strawberry, etc//////here i can make it a function and put that function in the other submit function and other functions that need the inlcudes
   for (let i = 0; i < ingredients.length; i++) {
     if (inputValue.toLowerCase().includes(ingredients[i].name.toLowerCase())) {
       img_el.src = ingredients[i].image;
@@ -281,7 +367,7 @@ function submitForm(e) {
   disableAnEnableBtn()
 }
 
-generateTopIngredients()
+// generateTopIngredients()
 
 form.addEventListener('submit', submitForm)
 
