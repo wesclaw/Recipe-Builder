@@ -85,7 +85,6 @@ ws.onmessage = (event) => {
   window.addEventListener('click',e=>{
     if(e.target.tagName==='I'){
       window.location.reload()
-      ////remove the parent element instead. dont refresh
     }
   })
 };
