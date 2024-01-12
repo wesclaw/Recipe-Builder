@@ -90,43 +90,6 @@ ws.onmessage = (event) => {
   })
 };
 
-// function generateTopIngredients() { 
-//   for(let i=0;i<60;i++){
-//     const ingred = document.createElement('div')
-//     ingred.classList.add('ingred')
-
-//     const p_el = document.createElement('p')
-//     p_el.textContent = ingredients[i].name
-
-//     const img_el = document.createElement('img')
-//     img_el.classList.add('ingredImage')
-//     img_el.src = ingredients[i].image
-
-//     ingred.append(p_el)
-//     ingred.append(img_el)
-
-//     wrapperForBtns.append(ingred)
-
-//     ////removing the ingred top item on click
-//     ingred.addEventListener('click',(e)=>{
-//       ingred.style.display = 'none'
-//       addToList(p_el, img_el)
-
-//       createPear(p_el)
-//     })
-
-//     wrapperForBtns.addEventListener("scroll",e=>{
-
-//     })
-//   }  
-// }
-
-
-
-///////////////////////////////////////
-
-
-
 function generateTopIngredients(ingredients) {
   const batchSize = 50;
   let currentIndex = 0;
@@ -181,13 +144,10 @@ function generateTopIngredients(ingredients) {
     const scrollHeight = wrapperForBtns.scrollHeight;
     const scrollTop = wrapperForBtns.scrollTop;
 
-    // Check if the user has scrolled to the bottom
     if (scrollTop + wrapperHeight >= scrollHeight - 10) {
-      // Load the next set of ingredients
       const startIndex = currentIndex;
       const endIndex = currentIndex + batchSize;
 
-      // Check if there are more ingredients to display
       if (startIndex < ingredients.length) {
         displayIngredients(startIndex, endIndex);
         currentIndex = endIndex;
@@ -199,8 +159,6 @@ function generateTopIngredients(ingredients) {
 
 generateTopIngredients(ingredients); 
 
-/////////////////////////////////
-
 let foodArray = new Map()
 
 function createPear(p_el) {
@@ -209,9 +167,7 @@ function createPear(p_el) {
   let p_text = p_el.textContent || p_el.innerText;
   p_text = p_text.toLowerCase();
 
-  // add here the plural and singular forms of each ingredient name
-
-  pearImage.src = 'images/' + p_text + '.png';
+  singularAndPlural(p_text, pearImage);
 
   let fallingPear;
 
@@ -245,7 +201,6 @@ function createPear(p_el) {
   pearImage.onerror = function (error) {
     console.error('Error loading image:', p_el, error);
   };
-
   return { pearImage, fallingPear };
 }
 
@@ -253,9 +208,7 @@ function removeTheFood(getText) {
   const lowerCaseText = getText.toLowerCase();
   if (foodArray.has(lowerCaseText)) {
     const fallingPear = foodArray.get(lowerCaseText);
-
     World.remove(engine.world, fallingPear);
-
     foodArray.delete(lowerCaseText);
   } 
 }
@@ -273,7 +226,6 @@ function addToList(p_el, img_el) {
 
   itemsList.append(div_tag)
 
-  ///pushing the p textContent into the array 
   chatPromptList.push(p_el.textContent)
 
   removeIngredients()
@@ -288,9 +240,7 @@ function removeIngredients() {
         item.remove()
         removeFromArray(item)
         disableAnEnableBtn()
-
         const getText = item.textContent
-
         removeTheFood(getText)
       }
     })
@@ -316,8 +266,7 @@ function removeFromArray(item) {
   const getText = item.textContent;
   const index = chatPromptList.indexOf(getText);
   if (index !== -1) {
-    chatPromptList.splice(index, 1); ///removing from array
-    console.log(chatPromptList); ////this is where i put the final prompt into the chat
+    chatPromptList.splice(index, 1); 
   }
 }
  
@@ -337,17 +286,8 @@ function submitForm(e) {
   const img_el = document.createElement('img')
   img_el.classList.add('ingredImage')
 
-  // change this to match the first letters. strawberries is the same as strawberry, etc//////here i can make it a function and put that function in the other submit function and other functions that need the inlcudes
-
-  // for (let i = 0; i < ingredients.length; i++) {
-  //   if (inputValue.toLowerCase().includes(ingredients[i].name.toLowerCase())) {
-  //     img_el.src = ingredients[i].image;
-  //   }
-  // }
-
-/////////////////////////
   singularAndPlural(inputValue, img_el)
-//////////////////////////
+
   const x_tag = document.createElement('span')
   x_tag.classList.add('x_tag')
   x_tag.innerHTML = `<i class="fa-solid fa-xmark"></i>`
@@ -366,24 +306,25 @@ function submitForm(e) {
 
   input.value = ''
 
-  console.log(chatPromptList)
-
   disableAnEnableBtn()
 }
 
-/////////////////////////
 function singularAndPlural(inputValue, img_el){
-  for (let i = 0; i < ingredients.length; i++) {
-    if (inputValue.toLowerCase().includes(ingredients[i].name.toLowerCase())) {
-      img_el.src = ingredients[i].image;
-    }
+  const getLastLetter = inputValue.charAt(inputValue.length - 1)
+  const getLastThreeLetters = inputValue.slice(-3);
+
+  if(getLastThreeLetters==='ies'){
+    const modifiedInputValue = inputValue.slice(0, -3) + 'y';
+    img_el.src = 'images/' + modifiedInputValue + '.png';
+  }else if(getLastLetter==='s'){
+    const modifiedInputValue = inputValue.slice(0, -1) 
+    img_el.src = 'images/' + modifiedInputValue + '.png';
+  }else if(inputValue){
+    img_el.src = 'images/' + inputValue + '.png'
   }
 }
 
-// generateTopIngredients()
-///////////////////////////////
 form.addEventListener('submit', submitForm)
-
 recipeBtn.addEventListener('click', sendArrayData)
 
 
