@@ -311,15 +311,18 @@ function submitForm(e) {
 function singularAndPlural(inputValue, img_el){
   const getLastLetter = inputValue.charAt(inputValue.length - 1)
   const getLastThreeLetters = inputValue.slice(-3);
-
-  if(getLastThreeLetters==='ies'){
+  
+  if (getLastThreeLetters === 'ies') {
     const modifiedInputValue = inputValue.slice(0, -3) + 'y';
     img_el.src = 'images/' + modifiedInputValue + '.png';
-  }else if(getLastLetter==='s'){
-    const modifiedInputValue = inputValue.slice(0, -1) 
+  } else if (getLastThreeLetters==='oes') { // New condition for 'oes'
+    const modifiedInputValue = inputValue.slice(0, -2)
     img_el.src = 'images/' + modifiedInputValue + '.png';
-  }else if(inputValue){
-    img_el.src = 'images/' + inputValue + '.png'
+  } else if (getLastLetter === 's') {
+    const modifiedInputValue = inputValue.slice(0, -1);
+    img_el.src = 'images/' + modifiedInputValue + '.png';
+  } else if (inputValue) {
+    img_el.src = 'images/' + inputValue + '.png';
   }
 }
 
