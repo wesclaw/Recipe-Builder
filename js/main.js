@@ -73,7 +73,6 @@ function sendArrayData() {
 
 ws.onmessage = (event) => {  
   const responseData = event.data
-
   itemsList.innerHTML = `
   <div class='module-outer'>
     <div class='new-item-list'>
@@ -318,13 +317,18 @@ function singularAndPlural(inputValue, img_el){
   } else if (getLastThreeLetters==='oes') { // New condition for 'oes'
     const modifiedInputValue = inputValue.slice(0, -2)
     img_el.src = 'images/' + modifiedInputValue + '.png';
-  } else if (getLastLetter === 's') {
+  }else if(getLastThreeLetters==='hes'){
+    const modifiedInputValue = inputValue.slice(0, -2)
+    img_el.src = 'images/' + modifiedInputValue + '.png'
+  } 
+  else if (getLastLetter === 's') {
     const modifiedInputValue = inputValue.slice(0, -1);
     img_el.src = 'images/' + modifiedInputValue + '.png';
   } else if (inputValue) {
     img_el.src = 'images/' + inputValue + '.png';
   }
 }
+
 
 form.addEventListener('submit', submitForm)
 recipeBtn.addEventListener('click', sendArrayData)
