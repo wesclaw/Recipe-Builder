@@ -247,7 +247,7 @@ function removeIngredients() {
 
 function disableAnEnableBtn(){
   const item_els = document.querySelectorAll('.item_el')
-  if(item_els.length>3){
+  if(item_els.length>1){
     recipeBtn.disabled = false
     recipeBtn.classList.add('recipeBtn')
     recipeBtn.classList.remove('recipeBtnPartOne')

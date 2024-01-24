@@ -401,6 +401,17 @@ h1{
   .wrapper-for-image{
     display: none;
   }
+
+  .x_tag:hover{
+    font-size: 1.3rem;
+  }
+
+  .ingred:hover{
+    animation-name: unset;
+    background: unset;
+    background-color: rgba(0, 255, 0, 0.356);
+  }
+  
 }
 
 
