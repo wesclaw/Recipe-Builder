@@ -329,7 +329,6 @@ function singularAndPlural(inputValue, img_el){
   }
 }
 
-
 form.addEventListener('submit', submitForm)
 recipeBtn.addEventListener('click', sendArrayData)
 
