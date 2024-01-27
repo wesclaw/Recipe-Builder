@@ -178,6 +178,9 @@ const ingredients = [
   { name: 'Ravioli', image: 'images/ravioli.png' },
   { name: 'Cottage Cheese', image: 'images/cottage cheese.png' },
   { name: 'Seaweed Paper', image: 'images/seaweed paper.png' },
+  { name: 'Beer', image: 'images/beer.png' },
+  { name: 'Whiskey', image: 'images/whiskey.png' },
+  { name: 'Bourbon', image: 'images/bourbon.png' },
 ];
 
 export default ingredients
