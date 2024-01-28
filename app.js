@@ -1,17 +1,55 @@
-require('dotenv').config();
+// require('dotenv').config();
+// const WebSocket = require('ws');
+// const OpenAI = require('openai').OpenAI;
+
+// const openai = new OpenAI();
+// const wss = new WebSocket.Server({ port: 3000 }); // Change the port as needed
+
+// wss.on('connection', (ws) => {
+//   ws.on('message', (data) => {
+//     const getString = data.toString()
+//     main(getString, ws);
+//     console.log(getString)
+//   });
+// });
+
+
+// 
+
+const express = require('express');
+const http = require('http');
 const WebSocket = require('ws');
 const OpenAI = require('openai').OpenAI;
+require('dotenv').config(); // Load environment variables from .env file
 
-const openai = new OpenAI();
-const wss = new WebSocket.Server({ port: 3000 }); // Change the port as needed
+const app = express();
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
+
+const openaiApiKey = process.env.OPENAI_API_KEY;
+
+if (!openaiApiKey) {
+  throw new Error("The OPENAI_API_KEY environment variable is missing or empty.");
+}
+
+const openai = new OpenAI({ apiKey: openaiApiKey });
 
 wss.on('connection', (ws) => {
   ws.on('message', (data) => {
-    const getString = data.toString()
+    const getString = data.toString();
     main(getString, ws);
-    console.log(getString)
+    console.log(getString);
   });
 });
+
+const PORT = process.env.PORT || 3000;
+
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+
+// 
 
 async function main(data, ws) {
   try {
