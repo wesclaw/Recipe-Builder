@@ -64,7 +64,7 @@ const recipeBtn = document.querySelector('.recipeBtn')
 
 let chatPromptList = []
 
-const ws = new WebSocket('ws://localhost:3000');
+const ws = new WebSocket('wss://localhost:3000');
 // should be wss for production
 
 function sendArrayData() {
