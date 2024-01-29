@@ -35,8 +35,12 @@ if (!openaiApiKey) {
 const openai = new OpenAI({ apiKey: openaiApiKey });
 
 // 
+
+const path = require('path');
+
 app.get('/', (req, res) => {
-  res.send('Hello, this is your recipe-builder app!');
+  const indexPath = path.join(__dirname, 'index.html');
+  res.sendFile(indexPath);
 });
 
 
