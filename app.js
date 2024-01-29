@@ -16,6 +16,56 @@
 
 // 
 
+// const express = require('express');
+// const http = require('http');
+// const WebSocket = require('ws');
+// const OpenAI = require('openai').OpenAI;
+// require('dotenv').config(); // Load environment variables from .env file
+
+// const app = express();
+// const server = http.createServer(app);
+// const wss = new WebSocket.Server({ server });
+
+// const openaiApiKey = process.env.OPENAI_API_KEY;
+
+// if (!openaiApiKey) {
+//   throw new Error("The OPENAI_API_KEY environment variable is missing or empty.");
+// }
+
+// const openai = new OpenAI({ apiKey: openaiApiKey });
+
+// // 
+
+// const path = require('path');
+
+// app.get('/', (req, res) => {
+//   const indexPath = path.join(__dirname, 'index.html');
+//   res.sendFile(indexPath);
+// });
+
+
+// // 
+
+// wss.on('connection', (ws) => {
+//   ws.on('message', (data) => {
+//     const getString = data.toString();
+//     main(getString, ws);
+//     console.log(getString);
+//   });
+// });
+
+// const PORT = process.env.PORT || 3000;
+
+// server.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });
+
+
+// 
+
+
+
+// 
 const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
@@ -34,17 +84,14 @@ if (!openaiApiKey) {
 
 const openai = new OpenAI({ apiKey: openaiApiKey });
 
-// 
+// Serve static files from the 'public' directory
+app.use(express.static('public'));
 
-const path = require('path');
-
+// Define a route for the root path
 app.get('/', (req, res) => {
-  const indexPath = path.join(__dirname, 'index.html');
+  const indexPath = path.join(__dirname, 'public', 'index.html');
   res.sendFile(indexPath);
 });
-
-
-// 
 
 wss.on('connection', (ws) => {
   ws.on('message', (data) => {
@@ -59,6 +106,9 @@ const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+
+
 
 
 // 
