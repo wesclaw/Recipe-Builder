@@ -60,17 +60,12 @@
 //   console.log(`Server is running on port ${PORT}`);
 // });
 
-
-// 
-
-
-
 // 
 const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
 const OpenAI = require('openai').OpenAI;
-require('dotenv').config(); // Load environment variables from .env file
+require('dotenv').config(); 
 
 const app = express();
 const server = http.createServer(app);
@@ -106,12 +101,6 @@ const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-
-
-
-
-// 
 
 async function main(data, ws) {
   try {
