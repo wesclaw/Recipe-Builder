@@ -34,6 +34,14 @@ if (!openaiApiKey) {
 
 const openai = new OpenAI({ apiKey: openaiApiKey });
 
+// 
+app.get('/', (req, res) => {
+  res.send('Hello, this is your recipe-builder app!');
+});
+
+
+// 
+
 wss.on('connection', (ws) => {
   ws.on('message', (data) => {
     const getString = data.toString();
