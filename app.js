@@ -79,10 +79,8 @@ if (!openaiApiKey) {
 
 const openai = new OpenAI({ apiKey: openaiApiKey });
 
-// Serve static files from the 'public' directory
 app.use(express.static('public'));
 
-// Define a route for the root path
 app.get('/', (req, res) => {
   const indexPath = path.join(__dirname, 'public', 'index.html');
   res.sendFile(indexPath);

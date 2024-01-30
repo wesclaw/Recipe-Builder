@@ -181,6 +181,18 @@ const ingredients = [
   { name: 'Beer', image: 'images/beer.png' },
   { name: 'Whiskey', image: 'images/whiskey.png' },
   { name: 'Bourbon', image: 'images/bourbon.png' },
+
+  { name: 'Sake', image: 'images/sake.png' },
+  { name: 'Rum', image: 'images/rum.png' },
+  { name: 'Tequila', image: 'images/tequila.png' },
+  { name: 'Gin', image: 'images/gin.png' },
+  { name: 'Brandy', image: 'images/brandy.png' },
+  { name: 'Absinthe', image: 'images/absinthe.png' },
+  { name: 'Scotch', image: 'images/scotch.png' },
+  { name: 'Orange Juice', image: 'images/orange juice.png' },
+  { name: 'Bourbon', image: 'images/bourbon.png' },
+  { name: 'Bourbon', image: 'images/bourbon.png' },
+  { name: 'Bourbon', image: 'images/bourbon.png' },
 ];
 
 export default ingredients

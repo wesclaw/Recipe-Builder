@@ -66,7 +66,6 @@ let chatPromptList = []
 
 // const ws = new WebSocket('ws://localhost:3000');
 const ws = new WebSocket('wss://freerecipemaker.onrender.com');
-
 // should be wss for production
 
 function sendArrayData() {
