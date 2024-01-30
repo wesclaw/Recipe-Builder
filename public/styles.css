@@ -411,6 +411,8 @@ h1{
     background: unset;
     background-color: rgba(0, 255, 0, 0.356);
   }
+
+  /* make wrapper for recipes smaller height */
   
 }
 
