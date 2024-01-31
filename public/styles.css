@@ -414,8 +414,10 @@ h1{
 
   .module-outer{
     overflow-y: hidden;
+    overflow-x: hidden;
   }
 
+  
   
 }
 
