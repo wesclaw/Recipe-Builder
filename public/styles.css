@@ -24,8 +24,8 @@ body{
   justify-content: center;
   align-items: center;
   gap: 10px;
-  /* min-width: 50vw;
-  overflow-x: hidden; */
+  min-height: 5px;
+  min-width: 450px;
 }
 
 /* this is the loading animation icon */
@@ -244,10 +244,8 @@ h1{
 }
 
 .module-outer{
-  margin: auto;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(0, 0, 0, 0.562);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -255,6 +253,11 @@ h1{
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);  
+  background: rgba(90, 109, 131, 0.548);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 
 .x-mark{
@@ -362,8 +365,6 @@ h1{
 
 .holder{
   text-align: center;
-  /* margin-top: 0px;
-  margin-bottom: 0px; */
 }
 
 @media (max-width: 1000px) {
@@ -410,14 +411,63 @@ h1{
     background-color: rgba(0, 255, 0, 0.356);
   }
 
-  .new-item-list{
+  /* .new-item-list{
     max-height: 70vh;
-  }
+  } */
 
   .module-outer{
     overflow-y: hidden;
     overflow-x: hidden;
   } 
+
+  .wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    min-height: unset;
+    min-width: unset;
+  }
+
+  .x-mark{
+    color: rgba(0, 0, 0, 0.753);
+    font-size: 2.2rem;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    z-index: 99;
+  }
+  
+  .x-mark:hover{
+    transform: unset;
+    transition: unset;
+  }
+
+  .new-item-list{
+    margin: auto;
+    background-color: #FFE9A2;
+    font-size: 1.1rem;
+    color: rgb(26, 24, 24);
+    font-weight: bold;
+    max-width: 800px;
+    line-height: 2rem;
+    border-radius: 20px;
+    position: relative;
+    padding: 30px;
+    
+    max-height: 70vh;
+    overflow-y: scroll;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: darkgray lightgray; /* Firefox 
+    /* Webkit (Chrome, Safari, Opera) */
+    z-index: -1;
+  }
+
+  .new-item-list pre{
+    max-width: 100%; 
+    white-space: pre-wrap;
+  }
 }
 
 
