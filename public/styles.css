@@ -24,6 +24,8 @@ body{
   justify-content: center;
   align-items: center;
   gap: 10px;
+  /* min-width: 50vw;
+  overflow-x: hidden; */
 }
 
 /* this is the loading animation icon */
@@ -360,8 +362,8 @@ h1{
 
 .holder{
   text-align: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  /* margin-top: 0px;
+  margin-bottom: 0px; */
 }
 
 @media (max-width: 1000px) {
@@ -415,10 +417,7 @@ h1{
   .module-outer{
     overflow-y: hidden;
     overflow-x: hidden;
-  }
-
-  
-  
+  } 
 }
 
 

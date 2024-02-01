@@ -70,6 +70,9 @@ const ws = new WebSocket('wss://freerecipemaker.onrender.com');
 
 function sendArrayData() {
   ws.send(chatPromptList)
+
+  // call function here to make items jump
+  //maybe just move the bottom line up to make them jump
 }
 
 ws.onmessage = (event) => {  
