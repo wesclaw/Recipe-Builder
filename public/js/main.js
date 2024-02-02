@@ -85,10 +85,16 @@ ws.onmessage = (event) => {
     </div>
   </div>`
 
-  window.addEventListener('click',e=>{
-    if(e.target.tagName==='I'){
-      window.location.reload()
-    }
+  // window.addEventListener('click',e=>{
+  //   if(e.target.tagName==='I'){
+  //     window.location.reload()
+  //   }
+  // })
+  
+  const xMark = document.querySelector('.x-mark')
+
+  xMark.addEventListener('click', e=>{
+    window.location.reload()
   })
 };
 
@@ -335,11 +341,4 @@ function singularAndPlural(inputValue, img_el){
 
 form.addEventListener('submit', submitForm)
 recipeBtn.addEventListener('click', sendArrayData)
-
-
-
-
-
-
-
 

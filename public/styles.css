@@ -393,16 +393,25 @@ h1{
     width: 95vw;
   }
 
-  canvas{
+  /* canvas{
     display: none !important;
-  }
+  } */
 
-  .wrapper-for-image{
+  /* .wrapper-for-image{
     display: none;
+  } */
+
+  .x_tag{
+    position: absolute;
+    right: 20px;
+    font-size: 2rem;
+    transition: .2s;
+    margin: 0;
+    padding: 0;
   }
 
   .x_tag:hover{
-    font-size: 1.3rem;
+    font-size: 2rem;
   }
 
   .ingred:hover{
@@ -410,10 +419,6 @@ h1{
     background: unset;
     background-color: rgba(0, 255, 0, 0.356);
   }
-
-  /* .new-item-list{
-    max-height: 70vh;
-  } */
 
   .module-outer{
     overflow-y: hidden;
@@ -433,10 +438,10 @@ h1{
     color: rgba(0, 0, 0, 0.753);
     font-size: 2.2rem;
     position: absolute;
-    right: 10px;
+    right: 5px;
     top: 10px;
     cursor: pointer;
-    z-index: 99;
+    /* z-index: 99; */
   }
   
   .x-mark:hover{
