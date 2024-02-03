@@ -393,14 +393,6 @@ h1{
     width: 95vw;
   }
 
-  /* canvas{
-    display: none !important;
-  } */
-
-  /* .wrapper-for-image{
-    display: none;
-  } */
-
   .x_tag{
     position: absolute;
     right: 20px;
@@ -441,7 +433,6 @@ h1{
     right: 5px;
     top: 10px;
     cursor: pointer;
-    /* z-index: 99; */
   }
   
   .x-mark:hover{
@@ -459,14 +450,13 @@ h1{
     line-height: 2rem;
     border-radius: 20px;
     position: relative;
-    padding: 30px;
-    
+    padding: 40px;
     max-height: 70vh;
     overflow-y: scroll;
     scrollbar-width: thin; /* Firefox */
     scrollbar-color: darkgray lightgray; /* Firefox 
     /* Webkit (Chrome, Safari, Opera) */
-    z-index: -1;
+    /* z-index: -1; */
   }
 
   .new-item-list pre{

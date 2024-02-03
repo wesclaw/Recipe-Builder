@@ -1,4 +1,4 @@
-// // had to make this 2 dots for it to show on github pages. not sure why...
+//had to make this 2 dots for it to show on github pages. not sure why...
 import ingredients from '../database/database.js'
 
 const Engine = Matter.Engine,
@@ -36,7 +36,7 @@ function setup() {
   const leftEdgeX = bowlX - boxWidth / 2;
   const leftEdgeY = rightEdgeY;
   
-  const bowl = Bodies.rectangle(bowlX, bowlY, boxWidth, 15, { isStatic: true, render: { fillStyle: 'transparent' } });
+  const bowl = Bodies.rectangle(bowlX, bowlY, boxWidth, 20, { isStatic: true, render: { fillStyle: 'transparent' } });
   const rightEdge = Bodies.rectangle(rightEdgeX, rightEdgeY, 15, 220, { isStatic: true, render: { fillStyle: 'transparent' } });
   const leftEdge = Bodies.rectangle(leftEdgeX, leftEdgeY, 15, 220, { isStatic: true, render: { fillStyle: 'transparent' } });
 
@@ -85,12 +85,6 @@ ws.onmessage = (event) => {
     </div>
   </div>`
 
-  // window.addEventListener('click',e=>{
-  //   if(e.target.tagName==='I'){
-  //     window.location.reload()
-  //   }
-  // })
-  
   const xMark = document.querySelector('.x-mark')
 
   xMark.addEventListener('click', e=>{
