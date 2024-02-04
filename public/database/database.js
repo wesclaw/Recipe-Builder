@@ -220,6 +220,7 @@ const ingredients = [
   { name: 'Apple Juice', image: 'images/apple juice.png' },
   { name: 'Tomato Juice', image: 'images/tomato juice.png' },
   { name: 'Grape Juice', image: 'images/grape juice.png' },
+  { name: 'Lime', image: 'images/lime.png' },
 ];
 
 export default ingredients
