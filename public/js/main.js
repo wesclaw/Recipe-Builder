@@ -333,6 +333,11 @@ function singularAndPlural(inputValue, img_el){
   }
 }
 
+function refreshPage(){
+  location.reload()
+}
+
+window.addEventListener('resize', refreshPage)
 form.addEventListener('submit', submitForm)
 recipeBtn.addEventListener('click', sendArrayData)
 
