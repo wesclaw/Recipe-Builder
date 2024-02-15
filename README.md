@@ -20,24 +20,20 @@ How It Works
 FreeRecipeMaker utilizes the Matter.js library to create a visually engaging experience. The gravity effect simulates ingredients falling into a basket, adding a touch of fun to the process. The application relies on a JavaScript database file containing the names and images of various ingredients, enabling seamless integration with the recipe generation process.
 
 Contribute
-If you're excited about the concept and want to contribute to FreeRecipeMaker, we welcome your contributions! Here's how you can get involved:
-
+-If you're excited about the concept and want to contribute to FreeRecipeMaker, we welcome your contributions! Here's how you can get involved:
 Fork the Repository:
-
-Fork the FreeRecipeMaker repository to your GitHub account.
+-Fork the FreeRecipeMaker repository to your GitHub account.
 Clone the Repository:
+-Clone the forked repository to your local machine.
 
-Clone the forked repository to your local machine.
 Enhance the Experience:
 
-Improve the user interface, add new features, or optimize existing functionality.
+-Improve the user interface, add new features, or optimize existing functionality.
 Extend the Ingredient Database:
-
-Contribute to the list of ingredients by adding names and images to the JavaScript database file.
+-Contribute to the list of ingredients by adding names and images to the JavaScript database file.
 Share Feedback:
 
-Engage in discussions on GitHub issues to provide feedback or report any issues you encounter.
+-Engage in discussions on GitHub issues to provide feedback or report any issues you encounter.
 Let's work together to make FreeRecipeMaker an even more enjoyable and user-friendly tool for turning your kitchen odds and ends into delightful dishes!
-
 
 Live: https://www.freerecipemaker.com
