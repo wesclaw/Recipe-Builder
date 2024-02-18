@@ -16,7 +16,7 @@ body{
   color: rgba(44, 39, 39, 0.712);
   font-weight: 100;
   overflow-x: hidden !important;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .wrap{
@@ -89,8 +89,9 @@ h1{
   padding-top: 10px;
   padding-bottom: 10px;
   box-shadow: inset 10px 0px 5px 0px rgba(0, 0, 0, 0.123);
-  scrollbar-width: thin; /* Firefox */
-  scrollbar-color: darkgray lightgray; /* Firefox */
+  /* scrollbar-width: thin;  */
+  scrollbar-width: unset;
+  scrollbar-color: darkgray lightgray; 
 
   /* Webkit (Chrome, Safari, Opera) */
   &::-webkit-scrollbar {
@@ -233,11 +234,11 @@ h1{
   font-family: 'Roboto', sans-serif;
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.342);
   max-height: 100vh;
-  overflow-y: scroll;
-  scrollbar-width: thin; /* Firefox */
-  scrollbar-color: darkgray lightgray; /* Firefox 
+  overflow-y: auto;
+  /* scrollbar-width:inherit; */
+  /* scrollbar-color: darkgray lightgray;  */
   /* Webkit (Chrome, Safari, Opera) */
-  &::-webkit-scrollbar {
+  /* &::-webkit-scrollbar {
     width: 15px;
   }
 
@@ -252,7 +253,7 @@ h1{
 
   &::-webkit-scrollbar-track {
     background-color: transparent;
-  }
+  } */
 }
 
 .new-item-list pre{
@@ -469,9 +470,9 @@ h1{
     position: relative;
     padding: 40px;
     max-height: 70vh;
-    overflow-y: scroll;
-    scrollbar-width: thin; /* Firefox */
-    scrollbar-color: darkgray lightgray; /* Firefox 
+    overflow-y: auto;
+    /* scrollbar-width: thin; /* Firefox */
+    /* scrollbar-color: darkgray lightgray;  */
     /* Webkit (Chrome, Safari, Opera) */
     /* z-index: -1; */
   }
