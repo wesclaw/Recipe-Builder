@@ -334,7 +334,9 @@ function singularAndPlural(inputValue, img_el){
 }
 
 function refreshPage(){
-  location.reload()
+  if (window.innerWidth > 600) {
+    location.reload();
+  }
 }
 
 window.addEventListener('resize', refreshPage)
