@@ -148,7 +148,7 @@ const ingredients = [
   { name: 'Sardine', image: 'images/sardine.png' },
   { name: 'Crawfish', image: 'images/crawfish.png' },
   { name: 'Anchovie', image: 'images/anchovie.png' },
-  { name: 'Mussels', image: 'images/mussels.png' },
+  { name: 'Mussel', image: 'images/mussel.png' },
   { name: 'Trout', image: 'images/trout.png' },
   { name: 'Ground Beef', image: 'images/ground beef.png' },
   { name: 'Chicken Breast', image: 'images/chicken breast.png' },
