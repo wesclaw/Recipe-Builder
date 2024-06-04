@@ -27,14 +27,14 @@ wss.on('connection', (ws) => {
   ws.on('message', (data) => {
     const getString = data.toString();
     main(getString, ws);
-    console.log(getString);
+    
   });
 });
 
 const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  
 });
 
 async function main(data, ws) {
@@ -62,7 +62,7 @@ async function main(data, ws) {
     ws.send(responseData);
 
   } catch (error) {
-    console.error('Error:', error.message);
+    
     ws.send('Error processing request');
   }
 }
