@@ -165,7 +165,7 @@ let foodArray = new Map()
 
 function createPear(p_el) {
   const pearImage = new Image();
-
+  console.log(pearImage)
   let p_text = p_el.textContent || p_el.innerText;
   p_text = p_text.toLowerCase();
 
@@ -208,6 +208,7 @@ function createPear(p_el) {
 
 function removeTheFood(getText) {
   const lowerCaseText = getText.toLowerCase();
+  
   if (foodArray.has(lowerCaseText)) {
     const fallingPear = foodArray.get(lowerCaseText);
     World.remove(engine.world, fallingPear);
@@ -232,6 +233,9 @@ function addToList(p_el, img_el) {
 
   removeIngredients()
   disableAnEnableBtn()
+
+  console.log(chatPromptList)
+
 }
 
 function removeIngredients() {
@@ -270,13 +274,34 @@ function removeFromArray(item) {
   if (index !== -1) {
     chatPromptList.splice(index, 1); 
   }
+  console.log(chatPromptList)
 }
+
+function checkForDoubledIngredients(){
+  const checkingIngredients = document.querySelectorAll('.item_el')
+  
+  for(const ingred of checkingIngredients){
+    const inputValue = input.value
+    const textContent = ingred.textContent;
+
+    if(inputValue === textContent){
+      alert('This item has already been added');
+      return true
+    }
+  }
+  return false
+}
+
  
 function submitForm(e) {
   e.preventDefault()
   const inputValue = input.value;
+
   if(!inputValue){
     return;
+  }else if(checkForDoubledIngredients()){
+    input.value = ''
+    return
   }
 
   const div_tag = document.createElement('div')
@@ -302,13 +327,15 @@ function submitForm(e) {
 
   chatPromptList.push(inputValue)
 
-  removeIngredients() 
-
   createPear(p_el)
+
+  removeIngredients() 
 
   input.value = ''
 
   disableAnEnableBtn()
+
+  console.log(chatPromptList)
 }
 
 function singularAndPlural(inputValue, img_el){
