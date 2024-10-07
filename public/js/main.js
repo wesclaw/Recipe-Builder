@@ -92,12 +92,21 @@ ws.onmessage = (event) => {
   })
 };
 
+// 
+function checkIfAlreadyExists(p_el){
+  
+}
+// 
+
 function generateTopIngredients(ingredients) {
   const batchSize = 50;
   let currentIndex = 0;
 
   function addIngredientEventListener(ingred, p_el, img_el) {
     ingred.addEventListener('click', (e) => {
+      // 
+      checkIfAlreadyExists(p_el)
+      // 
       ingred.style.display = 'none';
       addToList(p_el, img_el);
       createPear(p_el);
@@ -165,7 +174,6 @@ let foodArray = new Map()
 
 function createPear(p_el) {
   const pearImage = new Image();
-  console.log(pearImage)
   let p_text = p_el.textContent || p_el.innerText;
   p_text = p_text.toLowerCase();
 
@@ -233,9 +241,6 @@ function addToList(p_el, img_el) {
 
   removeIngredients()
   disableAnEnableBtn()
-
-  console.log(chatPromptList)
-
 }
 
 function removeIngredients() {
@@ -283,6 +288,8 @@ function checkForDoubledIngredients(){
   for(const ingred of checkingIngredients){
     const inputValue = input.value
     const textContent = ingred.textContent;
+
+
 
     if(inputValue === textContent){
       alert('This item has already been added');
@@ -335,7 +342,6 @@ function submitForm(e) {
 
   disableAnEnableBtn()
 
-  console.log(chatPromptList)
 }
 
 function singularAndPlural(inputValue, img_el){
