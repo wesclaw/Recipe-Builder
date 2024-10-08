@@ -70,9 +70,6 @@ const ws = new WebSocket('wss://freerecipemaker.onrender.com');
 
 function sendArrayData() {
   ws.send(chatPromptList)
-
-  // call function here to make items jump
-  //maybe just move the bottom line up to make them jump
 }
 
 ws.onmessage = (event) => {  
@@ -94,7 +91,19 @@ ws.onmessage = (event) => {
 
 // 
 function checkIfAlreadyExists(p_el){
-  
+  const getp_text = p_el.textContent
+  const makeSmallP = getp_text.toLowerCase()
+  const item_el = document.querySelectorAll('.item_el')
+
+  for(const items of item_el){
+    const itemText = items.textContent.toLowerCase()
+
+    if(itemText===makeSmallP){
+      alert('this ingredient is already added.')
+      return true
+    }
+  }
+  return false
 }
 // 
 
@@ -105,11 +114,14 @@ function generateTopIngredients(ingredients) {
   function addIngredientEventListener(ingred, p_el, img_el) {
     ingred.addEventListener('click', (e) => {
       // 
-      checkIfAlreadyExists(p_el)
-      // 
-      ingred.style.display = 'none';
-      addToList(p_el, img_el);
-      createPear(p_el);
+
+      if(checkIfAlreadyExists(p_el)){
+        return
+      }else{
+        ingred.style.display = 'none';
+        addToList(p_el, img_el);
+        createPear(p_el);
+      }
     });
   }
 
@@ -299,6 +311,21 @@ function checkForDoubledIngredients(){
   return false
 }
 
+function checkDoubledForSubmit(inputValue){
+  const getText = inputValue.toLowerCase()
+  const item_el = document.querySelectorAll('.item_el')
+
+  for(const item of item_el){
+    const getText = item.textContent.toLowerCase()
+
+    if(getText===getText){
+      alert('this ingredient is already added')
+      return true
+    }
+  }
+  return false
+}
+
  
 function submitForm(e) {
   e.preventDefault()
@@ -309,8 +336,10 @@ function submitForm(e) {
   }else if(checkForDoubledIngredients()){
     input.value = ''
     return
+  }else if(checkDoubledForSubmit(inputValue)){
+    input.value = ''
+    return 
   }
-
   const div_tag = document.createElement('div')
   div_tag.classList.add('item_el')
 
