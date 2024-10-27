@@ -293,53 +293,69 @@ function removeFromArray(item) {
   }
   console.log(chatPromptList)
 }
-
-function checkForDoubledIngredients(){
-  const checkingIngredients = document.querySelectorAll('.item_el')
+function checkForDoubledIngredients(input) {
+  const checkingIngredients = document.querySelectorAll('.item_el');
   
-  for(const ingred of checkingIngredients){
-    const inputValue = input.value
-    const textContent = ingred.textContent;
+  for (const ingred of checkingIngredients) {
+    const inputValue = input.value.trim(); // Get the input value and trim any whitespace
+    const textContent = ingred.textContent.trim(); // Trim the text content for accurate comparison
 
-
-
-    if(inputValue === textContent){
+    if (inputValue.toLowerCase() === textContent.toLowerCase()) { // Compare in a case-insensitive manner
       alert('This item has already been added');
-      return true
+      return true; // Found a duplicate
     }
   }
-  return false
+  return false; // No duplicates found
 }
 
-function checkDoubledForSubmit(inputValue){
-  const getText = inputValue.toLowerCase()
-  const item_el = document.querySelectorAll('.item_el')
+function checkDoubledForSubmit(inputValue) {
+  const itemEls = document.querySelectorAll('.item_el');
+  const inputText = inputValue.trim().toLowerCase(); // Process the input value once
 
-  for(const item of item_el){
-    const getText = item.textContent.toLowerCase()
+  for (const item of itemEls) {
+    const itemText = item.textContent.trim().toLowerCase(); // Trim and convert to lowercase
 
-    if(getText===getText){
-      alert('this ingredient is already added')
-      return true
+    if (inputText === itemText) { // Compare the processed values
+      alert('This ingredient is already added');
+      return true; // Found a duplicate
     }
   }
-  return false
+  return false; // No duplicates found
 }
 
  
 function submitForm(e) {
-  e.preventDefault()
-  const inputValue = input.value;
+  // e.preventDefault()
+  // const inputValue = input.value;
 
-  if(!inputValue){
+  // if(!inputValue){
+  //   return;
+  // }else if(checkForDoubledIngredients()){
+  //   input.value = ''
+  //   return
+  // }else if(checkDoubledForSubmit(inputValue)){
+  //   input.value = ''
+  //   return 
+  // }
+
+  e.preventDefault(); // Prevent default form submission
+  const inputElement = document.querySelector('.inputSearch'); // Use your actual input ID or class
+  const inputValue = inputElement.value.trim(); // Trim whitespace
+
+  if (!inputValue) {
+    alert('Please enter an ingredient'); // Optional: alert if input is empty
     return;
-  }else if(checkForDoubledIngredients()){
-    input.value = ''
-    return
-  }else if(checkDoubledForSubmit(inputValue)){
-    input.value = ''
-    return 
   }
+
+  // Check for duplicates
+  if (checkForDoubledIngredients(inputElement) || checkDoubledForSubmit(inputValue)) {
+    inputElement.value = ''; // Clear the input if a duplicate is found
+    return; // Exit the function
+  }
+
+
+
+  // 
   const div_tag = document.createElement('div')
   div_tag.classList.add('item_el')
 
