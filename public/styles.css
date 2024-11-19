@@ -290,6 +290,12 @@ h1{
   outline: none;
 }
 
+.cancel-icon{
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+}
+
 .item_el{
   height: 50px;
   display: flex;
