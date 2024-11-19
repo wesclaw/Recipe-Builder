@@ -241,7 +241,9 @@ function addToList(p_el, img_el) {
   const x_tag = document.createElement('span')
   x_tag.classList.add('x_tag')
   // add x here to the item ingred 
-   x_tag.innerHTML = `<i class="fa-solid fa-xmark"></i>`
+  // x_tag.innerHTML = `<i class="fa-solid fa-xmark"></i>`
+  x_tag.textContent = 'x'
+  // 
   
   div_tag.append(p_el)
   div_tag.append(img_el)
