@@ -262,12 +262,14 @@ function removeIngredients() {
   items.forEach((item)=>{
     item.addEventListener('click',e=>{
       // 
-      if(e.target.tagName==='I' || e.target.tagName==='span'){
-        item.remove()
-        removeFromArray(item)
-        disableAnEnableBtn()
+      if(e.target.tagName==='span'){
+        
         const getText = item.textContent
+        console.log(getText)
+        removeFromArray(item)
         removeTheFood(getText)
+        item.remove()
+        disableAnEnableBtn()
       }
     })
   })
