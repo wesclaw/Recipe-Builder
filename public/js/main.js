@@ -106,7 +106,6 @@ function checkIfAlreadyExists(p_el){
   }
   return false
 }
-// 
 
 function generateTopIngredients(ingredients) {
   const batchSize = 50;
@@ -242,7 +241,7 @@ function addToList(p_el, img_el) {
   const x_tag = document.createElement('span')
   x_tag.classList.add('x_tag')
   // add x here to the item ingred 
-  x_tag.innerHTML = `x`
+   x_tag.innerHTML = `<i class="fa-solid fa-xmark"></i>`
   
   div_tag.append(p_el)
   div_tag.append(img_el)
