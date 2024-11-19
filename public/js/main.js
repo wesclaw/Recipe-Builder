@@ -77,7 +77,8 @@ ws.onmessage = (event) => {
   itemsList.innerHTML = `
   <div class='module-outer'>
     <div class='new-item-list'>
-      <i class="fa-solid fa-xmark x-mark"></i>
+      
+      <button class='x-mark'>X</button>
       <pre>${responseData}</pre>
     </div>
   </div>`
