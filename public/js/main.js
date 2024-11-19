@@ -114,7 +114,6 @@ function generateTopIngredients(ingredients) {
 
   function addIngredientEventListener(ingred, p_el, img_el) {
     ingred.addEventListener('click', (e) => {
-      // 
 
       if(checkIfAlreadyExists(p_el)){
         return
@@ -327,19 +326,6 @@ function checkDoubledForSubmit(inputValue) {
 
  
 function submitForm(e) {
-  // e.preventDefault()
-  // const inputValue = input.value;
-
-  // if(!inputValue){
-  //   return;
-  // }else if(checkForDoubledIngredients()){
-  //   input.value = ''
-  //   return
-  // }else if(checkDoubledForSubmit(inputValue)){
-  //   input.value = ''
-  //   return 
-  // }
-
   e.preventDefault(); // Prevent default form submission
   const inputElement = document.querySelector('.inputSearch'); // Use your actual input ID or class
   const inputValue = inputElement.value.trim(); // Trim whitespace
@@ -355,9 +341,6 @@ function submitForm(e) {
     return; // Exit the function
   }
 
-
-
-  // 
   const div_tag = document.createElement('div')
   div_tag.classList.add('item_el')
 
