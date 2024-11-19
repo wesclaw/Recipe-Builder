@@ -262,10 +262,11 @@ function removeIngredients() {
   items.forEach((item)=>{
     item.addEventListener('click',e=>{
       // 
-      if(e.target.tagName==='span'){
+      // if(e.target.tagName==='span'){
+      if(e.target.classList.contains('x_tag'){
         
         const getText = item.textContent
-        console.log(getText)
+        
         removeFromArray(item)
         removeTheFood(getText)
         item.remove()
