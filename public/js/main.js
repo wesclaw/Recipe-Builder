@@ -292,7 +292,6 @@ function removeFromArray(item) {
   if (index !== -1) {
     chatPromptList.splice(index, 1); 
   }
-  console.log(chatPromptList)
 }
 function checkForDoubledIngredients(input) {
   const checkingIngredients = document.querySelectorAll('.item_el');
