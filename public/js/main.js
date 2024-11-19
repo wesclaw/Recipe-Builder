@@ -259,7 +259,8 @@ function removeIngredients() {
   const items = document.querySelectorAll('.item_el')
   items.forEach((item)=>{
     item.addEventListener('click',e=>{
-      if(e.target.tagName==='I'){
+      // 
+      if(e.target.tagName==='I' || e.target.tagName==='span'){
         item.remove()
         removeFromArray(item)
         disableAnEnableBtn()
