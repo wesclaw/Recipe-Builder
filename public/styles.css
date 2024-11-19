@@ -285,12 +285,9 @@ h1{
   right: 10px;
   top: 10px;
   cursor: pointer;
-  transition: 1s;
-}
-
-.x-mark:hover{
-  transform: rotate(360deg);
-  transition: 1s;
+  background: transparent;
+  border: none;
+  outline: none;
 }
 
 .item_el{
@@ -313,9 +310,6 @@ h1{
   transition: .2s;
   margin: 0;
   padding: 0;
-  background: transparent;
-  border: none;
-  outline: none;
 }
 
 .x_tag:hover{
