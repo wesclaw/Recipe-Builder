@@ -240,11 +240,7 @@ function addToList(p_el, img_el) {
   div_tag.classList.add('item_el')
   const x_tag = document.createElement('span')
   x_tag.classList.add('x_tag')
-  // add x here to the item ingred 
-  // x_tag.innerHTML = `<i class="fa-solid fa-xmark"></i>`
-  x_tag.innerHTML = `<img src="../images/cancel.png" class="cancel-icon">`
-  /////////////////// 
-  
+  x_tag.innerHTML = `<img src="../images/cancel.png" class="cancel-icon">`  
   div_tag.append(p_el)
   div_tag.append(img_el)
   div_tag.append(x_tag)
@@ -355,7 +351,9 @@ function submitForm(e) {
 
   const x_tag = document.createElement('span')
   x_tag.classList.add('x_tag')
-  x_tag.innerHTML = `<i class="fa-solid fa-xmark"></i>`
+  // x_tag.innerHTML = `<i class="fa-solid fa-xmark"></i>`
+  x_tag.innerHTML = `<img src="../images/cancel.png" class="cancel-icon">`
+  // add here the same image///////////////////////////////////////////////////
 
   div_tag.append(p_el)
   div_tag.append(img_el)
