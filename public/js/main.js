@@ -405,3 +405,10 @@ window.addEventListener('resize', refreshPage)
 form.addEventListener('submit', submitForm)
 recipeBtn.addEventListener('click', sendArrayData)
 
+document.addEventListener('DOMContentLoaded',e=>{
+  const wrapper_for_ingred = document.querySelector('.wrapper-for-buttons')
+  if(wrapperForBtns.innerHTML===''){
+    window.location.reload()
+  }
+})
+
