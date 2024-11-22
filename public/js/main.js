@@ -398,6 +398,71 @@ function checkDoubledForSubmit(inputValue) {
   return false; // No duplicates found
 }
 
+
+/////////////////////////////////////////////////////
+
+const inputElement = document.querySelector('.inputSearch');
+
+let container; // Declare the container variable outside for reuse
+
+inputElement.addEventListener('keyup', e => {
+  const getInputValue = inputElement.value.trim().toLowerCase(); // Normalize input to lowercase
+
+  if (getInputValue) {
+    // If input is not empty
+    if (!container) {
+      // Only create and append the container if it doesn't already exist
+      container = document.createElement('div');
+      container.classList.add('keyUpSearchContainer');
+      form.append(container);
+    }
+
+    // Clear previous results
+    container.innerHTML = '';
+
+    // Find matching ingredients
+    const matchingIngredients = ingredients.filter(ingredient =>
+      ingredient.name.toLowerCase().startsWith(getInputValue)
+    );
+
+    if (matchingIngredients.length > 0) {
+      // Create a button for each matching ingredient
+      inputElement.classList.add('changeBorder')
+
+      matchingIngredients.forEach(ingredient => {
+        const button = document.createElement('button');
+        button.classList.add('ingredient-btn');
+        button.textContent = ingredient.name; // Set button text to the ingredient name
+        container.append(button);
+
+        // Optional: Add a click event for the button
+        button.addEventListener('click', (e) => {
+          e.preventDefault()
+          console.log(e.target.textContent)
+          inputElement.value = e.target.textContent;
+          container.remove()
+          inputElement.classList.remove('changeBorder')
+          inputElement.focus()
+        });
+      });
+    } else {
+      // If no matches, show a message
+      const noMatchMessage = document.createElement('p');
+      noMatchMessage.textContent = 'No matching ingredients found.';
+      noMatchMessage.classList.add('no-match-message');
+      container.append(noMatchMessage);
+    }
+  } else {
+    // If input is empty, remove the container if it exists
+    if (container) {
+      container.remove();
+      inputElement.classList.remove('changeBorder')
+      container = null; // Reset container to allow adding it again later
+    }
+  }
+});
+
+////////////////////////////////////////////////////////// 
  
 function submitForm(e) {
   e.preventDefault(); // Prevent default form submission

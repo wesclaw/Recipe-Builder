@@ -115,14 +115,14 @@ h1{
 
 .inputSearch{
   width: 60vw;
-  font-size: 1.3rem;
+  font-size: 1.5rem !important;
   color: gray;
-  padding: 15px;
+  padding: 20px;
   padding-left: 50px;
   outline: none;
   border: none;
-  box-shadow: 0px 0px 10px 0px rgba(12, 8, 8, 0.253);
-  border-radius: 50px;
+  box-shadow: 0px 0px 10px 0px rgba(12, 8, 8, 0.322);
+  border-radius: 40px;
 }
 
 .inputSearch:focus{
@@ -292,6 +292,55 @@ h1{
   margin-top: 20px;
   
 }
+
+ /* //////////////////////////////////// /////////*/
+.keyUpSearchContainer{
+  background-color: white;
+  width: 100%;
+  position: absolute;
+  top: 55px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  /* border: 2px solid rgba(28, 185, 177, 0.863); */
+  border-bottom: 2px solid rgba(28, 185, 177, 0.863);
+  border-left: 2px solid rgba(28, 185, 177, 0.863);
+  border-right: 2px solid rgba(28, 185, 177, 0.863);;
+  z-index: 999;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 1px 1px 0px 0px rgba(12, 8, 8, 0.322), 
+            -1px 1px 0px 0px rgba(12, 8, 8, 0.322), 
+            0px 1px 0px 0px rgba(12, 8, 8, 0.322);
+  
+}
+
+.ingredient-btn{
+  padding: 10px;
+  font-size: 1.1rem;
+  width: 100%;
+  text-align: start;
+  background-color: transparent;
+  border: none;
+  font-family: sans-serif;
+  font-weight: bold;
+  letter-spacing: .04em;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.834);
+  outline: none;
+}
+
+.ingredient-btn:hover{
+  background-color: rgba(28, 185, 177, 0.863);;
+  
+}
+
+.changeBorder{
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+/* ///////////////////////////////// //////////*/
 
 .download-btn:hover{
   background-color: #45a049;

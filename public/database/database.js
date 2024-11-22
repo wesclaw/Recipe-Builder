@@ -60,7 +60,6 @@ const ingredients = [
   { name: 'Honeydew Melon', image: 'images/honeydew melon.png' },
   { name: 'Tofu', image: 'images/tofu.png' },
   { name: 'Cinnamon', image: 'images/cinnamon.png' },
-  { name: 'Peach', image: 'images/peach.png' },
   { name: 'Cherry Tomato', image: 'images/cherry tomato.png' },
   { name: 'Pistachio', image: 'images/pistachio.png' },
   { name: 'Chilli', image: 'images/chilli.png' },
