@@ -1,4 +1,4 @@
-//had to make this 2 dots for it to show on github pages. not sure why...
+
 import ingredients from '../database/database.js'
 
 const Engine = Matter.Engine,
@@ -73,22 +73,99 @@ function sendArrayData() {
 }
 
 ws.onmessage = (event) => {  
-  const responseData = event.data
+  const responseData = event.data;
+
+  const styledHTMLContent = `
+  <html>
+    <head>
+      <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #e2e8f0;
+        color: #4a4a4a;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .recipe-container {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      pre {
+        padding: 15px;
+        border-radius: 8px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        font-size: 1.2rem;
+        background-color: #f9fafb;
+        color: #333;
+        line-height: 1.6;
+        word-spacing: 0.1em;
+      }      
+        
+      </style>
+    </head>
+    <body>
+      <div class="recipe-container">
+        <pre>${responseData}</pre>
+      </div>
+    </body>
+  </html>`;
+
+
   itemsList.innerHTML = `
   <div class='module-outer'>
     <div class='new-item-list'>
-      
       <button class='x-mark'>X</button>
       <pre>${responseData}</pre>
+      <button class='download-btn' style='display: none;'>Download</button>
     </div>
   </div>`
 
   const xMark = document.querySelector('.x-mark')
+  
+  const pre_el = document.querySelector('pre')
+  const downloadBtn = document.querySelector('.download-btn')
+
+  if(pre_el.textContent==='Finding a recipe...'){
+    console.log('normal')
+  }else{
+    downloadBtn.style = 'block'
+  }
 
   xMark.addEventListener('click', e=>{
     window.location.reload()
   })
+
+  downloadBtn.addEventListener('click', () => {
+    const blob = new Blob([styledHTMLContent], { type: 'text/html' }); // Create a Blob with HTML content
+    const url = URL.createObjectURL(blob); // Create a URL for the Blob
+    const a = document.createElement('a'); // Create an anchor tag
+    a.href = url; // Set the href to the Blob URL
+    a.download = 'recipe.html'; // Set the download filename
+    a.click(); // Programmatically click the anchor tag to trigger the download
+    URL.revokeObjectURL(url); // Clean up the URL object
+  });
+
+
+  document.querySelector('.share-btn').addEventListener('click', function() {
+    const urlToShare = window.location.href; // URL of the current page, change if needed
+    const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlToShare)}`;
+  
+    window.open(facebookShareUrl, '_blank', 'width=600,height=400');
+  });
+
+
 };
+
+
+
 
 // 
 function checkIfAlreadyExists(p_el){
@@ -100,7 +177,7 @@ function checkIfAlreadyExists(p_el){
     const itemText = items.textContent.toLowerCase()
 
     if(itemText===makeSmallP){
-      alert('this ingredient is already added.')
+      alert('This ingredient is already added.')
       return true
     }
   }
@@ -405,21 +482,6 @@ window.addEventListener('resize', refreshPage)
 form.addEventListener('submit', submitForm)
 recipeBtn.addEventListener('click', sendArrayData)
 
-document.addEventListener('DOMContentLoaded',e=>{
-  const wrapper_for_ingred = document.querySelector('.wrapper-for-buttons')
-  if(wrapperForBtns.innerHTML===''){
-    window.location.reload()
-  }
-})
-
-function checkForEmptyIngreds(){
-  const wrapper_for_ingred = document.querySelector('.wrapper-for-buttons')
-  if(wrapperForBtns.innerHTML===''){
-    window.location.reload()
-  }
-}
-
-checkForEmptyIngreds()
 
 
 

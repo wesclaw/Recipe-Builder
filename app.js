@@ -48,7 +48,7 @@ async function main(data, ws) {
       messages: [
         {
           role: 'system',
-          content: 'You must use the ingredients to make a recipe. Use only the ingredients provided. DO NOT use another ingredient that is not included by the user.',
+          content: 'You must use the ingredients to make a recipe. Use only the ingredients provided. DO NOT use another ingredient that is not included by the user. Make sure to include only the name of the recipe, ingredients used, and the instructions.',
         },
         {
           role: 'user',
