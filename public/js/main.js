@@ -153,15 +153,6 @@ ws.onmessage = (event) => {
     URL.revokeObjectURL(url); // Clean up the URL object
   });
 
-
-  document.querySelector('.share-btn').addEventListener('click', function() {
-    const urlToShare = window.location.href; // URL of the current page, change if needed
-    const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlToShare)}`;
-  
-    window.open(facebookShareUrl, '_blank', 'width=600,height=400');
-  });
-
-
 };
 
 
@@ -438,11 +429,13 @@ inputElement.addEventListener('keyup', e => {
         // Optional: Add a click event for the button
         button.addEventListener('click', (e) => {
           e.preventDefault()
-          console.log(e.target.textContent)
+          
           inputElement.value = e.target.textContent;
+          console.log(inputElement.value)
           container.remove()
           inputElement.classList.remove('changeBorder')
           inputElement.focus()
+
         });
       });
     } else {
@@ -468,6 +461,7 @@ function submitForm(e) {
   e.preventDefault(); // Prevent default form submission
   const inputElement = document.querySelector('.inputSearch'); // Use your actual input ID or class
   const inputValue = inputElement.value.trim(); // Trim whitespace
+  inputValue.toLowerCase()
 
   if (!inputValue) {
     alert('Please enter an ingredient'); // Optional: alert if input is empty
