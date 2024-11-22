@@ -412,3 +412,17 @@ document.addEventListener('DOMContentLoaded',e=>{
   }
 })
 
+function checkForEmptyIngreds(){
+  const wrapper_for_ingred = document.querySelector('.wrapper-for-buttons')
+  if(wrapperForBtns.innerHTML===''){
+    window.location.reload()
+  }
+}
+
+checkForEmptyIngreds()
+
+
+
+
+
+
