@@ -386,74 +386,64 @@ function checkDoubledForSubmit(inputValue) {
   return false; // No duplicates found
 }
 
+const inputElement = document.querySelector('.inputSearch');
+let container; 
 
-/////////////////////////////////////////////////////
+inputElement.addEventListener('keyup', e => {
+  const getInputValue = inputElement.value.trim().toLowerCase(); 
 
-// const inputElement = document.querySelector('.inputSearch');
+  if (getInputValue) {
+    if (!container) {
+      container = document.createElement('div');
+      container.classList.add('keyUpSearchContainer');
+      form.append(container);
+    }
 
-// let container; // Declare the container variable outside for reuse
+    container.innerHTML = '';
 
-// inputElement.addEventListener('keyup', e => {
-//   const getInputValue = inputElement.value.trim().toLowerCase(); // Normalize input to lowercase
+    const matchingIngredients = ingredients.filter(ingredient =>
+      ingredient.name.toLowerCase().startsWith(getInputValue)
+    );
 
-//   if (getInputValue) {
-//     // If input is not empty
-//     if (!container) {
-//       // Only create and append the container if it doesn't already exist
-//       container = document.createElement('div');
-//       container.classList.add('keyUpSearchContainer');
-//       form.append(container);
-//     }
+    if (matchingIngredients.length > 0) {
+      inputElement.classList.add('changeBorder')
 
-//     // Clear previous results
-//     container.innerHTML = '';
+      matchingIngredients.forEach(ingredient => {
+        const button = document.createElement('button');
+        button.classList.add('ingredient-btn');
+        button.textContent = ingredient.name; // Set button text to the ingredient name
+        container.append(button);
 
-//     // Find matching ingredients
-//     const matchingIngredients = ingredients.filter(ingredient =>
-//       ingredient.name.toLowerCase().startsWith(getInputValue)
-//     );
-
-//     if (matchingIngredients.length > 0) {
-//       // Create a button for each matching ingredient
-//       inputElement.classList.add('changeBorder')
-
-//       matchingIngredients.forEach(ingredient => {
-//         const button = document.createElement('button');
-//         button.classList.add('ingredient-btn');
-//         button.textContent = ingredient.name; // Set button text to the ingredient name
-//         container.append(button);
-
-//         // Optional: Add a click event for the button
-//         button.addEventListener('click', (e) => {
-//           e.preventDefault()
+        // Optional: Add a click event for the button
+        button.addEventListener('click', (e) => {
+          e.preventDefault()
           
-//           inputElement.value = e.target.textContent;
-//           console.log(inputElement.value)
-//           container.remove()
-//           inputElement.classList.remove('changeBorder')
-//           inputElement.focus()
+          inputElement.value = e.target.textContent;
+          console.log(inputElement.value)
+          container.remove()
+          inputElement.classList.remove('changeBorder')
+          inputElement.focus()
 
-//         });
-//       });
-//     } else {
-//       // If no matches, show a message
-//       const noMatchMessage = document.createElement('p');
-//       noMatchMessage.textContent = 'No matching ingredients found.';
-//       noMatchMessage.classList.add('no-match-message');
-//       container.append(noMatchMessage);
-//     }
-//   } else {
-//     // If input is empty, remove the container if it exists
-//     if (container) {
-//       container.remove();
-//       inputElement.classList.remove('changeBorder')
-//       container = null; // Reset container to allow adding it again later
-//     }
-//   }
-// });
+        });
+      });
+    } else {
+      // If no matches, show a message
+      const noMatchMessage = document.createElement('p');
+      noMatchMessage.textContent = 'No matching ingredients found.';
+      noMatchMessage.classList.add('no-match-message');
+      container.append(noMatchMessage);
+    }
+  } else {
+  
+    if (container) {
+      container.remove();
+      inputElement.classList.remove('changeBorder')
+      container = null; 
+    }
+  }
+});
 
-////////////////////////////////////////////////////////// 
- 
+
 function submitForm(e) {
   e.preventDefault(); // Prevent default form submission
   const inputElement = document.querySelector('.inputSearch'); // Use your actual input ID or class
@@ -504,33 +494,10 @@ function submitForm(e) {
 
 }
 
-// function singularAndPlural(inputValue, img_el){
-
-//   console.log(inputValue)
-
-//   const getLastLetter = inputValue.charAt(inputValue.length - 1)
-//   const getLastThreeLetters = inputValue.slice(-3);
-  
-//   if (getLastThreeLetters === 'ies') {
-//     const modifiedInputValue = inputValue.slice(0, -3) + 'y';
-//     img_el.src = 'images/' + modifiedInputValue + '.png';
-//   } else if (getLastThreeLetters==='oes') { // New condition for 'oes'
-//     const modifiedInputValue = inputValue.slice(0, -2)
-//     img_el.src = 'images/' + modifiedInputValue + '.png';
-//   }else if(getLastThreeLetters==='hes'){
-//     const modifiedInputValue = inputValue.slice(0, -2)
-//     img_el.src = 'images/' + modifiedInputValue + '.png'
-//   } 
-//   else if (getLastLetter === 's') {
-//     const modifiedInputValue = inputValue.slice(0, -1);
-//     img_el.src = 'images/' + modifiedInputValue + '.png';
-//   } else if (inputValue) {
-//     img_el.src = 'images/' + inputValue + '.png';
-//   }
-// }
-
 function singularAndPlural(inputValue, img_el) {
   const lowerInputValue = inputValue.toLowerCase();
+
+  console.log(lowerInputValue)
 
   const getLastLetter = lowerInputValue.charAt(lowerInputValue.length - 1);
   const getLastThreeLetters = lowerInputValue.slice(-3);
