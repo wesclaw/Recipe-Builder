@@ -155,9 +155,6 @@ ws.onmessage = (event) => {
 
 };
 
-
-
-
 // 
 function checkIfAlreadyExists(p_el){
   const getp_text = p_el.textContent
@@ -462,17 +459,15 @@ function submitForm(e) {
   const inputElement = document.querySelector('.inputSearch'); // Use your actual input ID or class
   
   const inputValue = inputElement.value.trim(); // Trim whitespace
-  // inputValue.toLowerCase()
   
   if (!inputValue) {
-    alert('Please enter an ingredient'); // Optional: alert if input is empty
+    alert('Please enter an ingredient'); 
     return;
   }
 
-  // Check for duplicates
   if (checkForDoubledIngredients(inputElement) || checkDoubledForSubmit(inputValue)) {
-    inputElement.value = ''; // Clear the input if a duplicate is found
-    return; // Exit the function
+    inputElement.value = ''; 
+    return; 
   }
 
   const div_tag = document.createElement('div')
@@ -488,9 +483,8 @@ function submitForm(e) {
 
   const x_tag = document.createElement('span')
   x_tag.classList.add('x_tag')
-  // x_tag.innerHTML = `<i class="fa-solid fa-xmark"></i>`
+  
   x_tag.innerHTML = `<img src="../images/cancel.png" class="cancel-icon">`
-  // add here the same image///////////////////////////////////////////////////
 
   div_tag.append(p_el)
   div_tag.append(img_el)
@@ -510,27 +504,55 @@ function submitForm(e) {
 
 }
 
-function singularAndPlural(inputValue, img_el){
-  const getLastLetter = inputValue.charAt(inputValue.length - 1)
-  const getLastThreeLetters = inputValue.slice(-3);
+// function singularAndPlural(inputValue, img_el){
+
+//   console.log(inputValue)
+
+//   const getLastLetter = inputValue.charAt(inputValue.length - 1)
+//   const getLastThreeLetters = inputValue.slice(-3);
+  
+//   if (getLastThreeLetters === 'ies') {
+//     const modifiedInputValue = inputValue.slice(0, -3) + 'y';
+//     img_el.src = 'images/' + modifiedInputValue + '.png';
+//   } else if (getLastThreeLetters==='oes') { // New condition for 'oes'
+//     const modifiedInputValue = inputValue.slice(0, -2)
+//     img_el.src = 'images/' + modifiedInputValue + '.png';
+//   }else if(getLastThreeLetters==='hes'){
+//     const modifiedInputValue = inputValue.slice(0, -2)
+//     img_el.src = 'images/' + modifiedInputValue + '.png'
+//   } 
+//   else if (getLastLetter === 's') {
+//     const modifiedInputValue = inputValue.slice(0, -1);
+//     img_el.src = 'images/' + modifiedInputValue + '.png';
+//   } else if (inputValue) {
+//     img_el.src = 'images/' + inputValue + '.png';
+//   }
+// }
+
+function singularAndPlural(inputValue, img_el) {
+  const lowerInputValue = inputValue.toLowerCase();
+
+  const getLastLetter = lowerInputValue.charAt(lowerInputValue.length - 1);
+  const getLastThreeLetters = lowerInputValue.slice(-3);
   
   if (getLastThreeLetters === 'ies') {
-    const modifiedInputValue = inputValue.slice(0, -3) + 'y';
+    const modifiedInputValue = lowerInputValue.slice(0, -3) + 'y';
     img_el.src = 'images/' + modifiedInputValue + '.png';
-  } else if (getLastThreeLetters==='oes') { // New condition for 'oes'
-    const modifiedInputValue = inputValue.slice(0, -2)
+  } else if (getLastThreeLetters === 'oes') { // New condition for 'oes'
+    const modifiedInputValue = lowerInputValue.slice(0, -2);
     img_el.src = 'images/' + modifiedInputValue + '.png';
-  }else if(getLastThreeLetters==='hes'){
-    const modifiedInputValue = inputValue.slice(0, -2)
-    img_el.src = 'images/' + modifiedInputValue + '.png'
-  } 
-  else if (getLastLetter === 's') {
-    const modifiedInputValue = inputValue.slice(0, -1);
+  } else if (getLastThreeLetters === 'hes') {
+    const modifiedInputValue = lowerInputValue.slice(0, -2);
     img_el.src = 'images/' + modifiedInputValue + '.png';
-  } else if (inputValue) {
-    img_el.src = 'images/' + inputValue + '.png';
+  } else if (getLastLetter === 's') {
+    const modifiedInputValue = lowerInputValue.slice(0, -1);
+    img_el.src = 'images/' + modifiedInputValue + '.png';
+  } else {
+    img_el.src = 'images/' + lowerInputValue + '.png';
   }
 }
+
+
 
 function refreshPage(){
   if (window.innerWidth > 600) {
