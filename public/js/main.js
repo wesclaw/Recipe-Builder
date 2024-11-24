@@ -124,7 +124,18 @@ ws.onmessage = (event) => {
     <div class='new-item-list'>
       <button class='x-mark'>X</button>
       <pre>${responseData}</pre>
-      <button class='download-btn' style='display: none;'>Download</button>
+      <button class='download-btn' style='display: none;'>Download Recipe Here</button>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3438813954855017"
+     crossorigin="anonymous"></script>
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-format="fluid"
+          data-ad-layout-key="-6l+ej+v-5m+9v"
+          data-ad-client="ca-pub-3438813954855017"
+          data-ad-slot="5195368423"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     </div>
   </div>`
 
