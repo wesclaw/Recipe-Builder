@@ -10,6 +10,18 @@ canvas{
   z-index: -1 !important;
 } 
 
+.donate-button {
+  display: inline-block;
+  background-color: #ffdd00;
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
 body{
   background-color: ghostwhite;
   font-family: sans-serif;
@@ -436,6 +448,11 @@ h1{
 
 .holder{
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
 @media (max-width: 1000px) {
