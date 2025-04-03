@@ -690,7 +690,7 @@ function submitForm(e) {
   const inputElement = document.querySelector('.inputSearch'); // Use your actual input ID or class
   
   const inputValue = inputElement.value.trim(); // Trim whitespace
-  
+
   if (!inputValue) {
     alert('Please enter an ingredient'); 
     return;
