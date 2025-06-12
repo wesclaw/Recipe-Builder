@@ -1,8 +1,3 @@
-
-// import ingredients from '../database/database.js'
-
-
-// 
 const ingredients = [
   { name: 'Rice', image: 'images/rice.png' },
   { name: 'Egg', image: 'images/egg.png' },
@@ -256,21 +251,40 @@ function setup() {
 
   const cenDiv = document.querySelector('.wrapper-for-image');
 
-  const margin = 50;
-  const boxWidth = 240;
+  const margin = 0;
+  // const boxWidth = 240;
   
-  const bowlX = cenDiv.offsetWidth / 2;
-  const bowlY = cenDiv.offsetHeight / 2 + 415 + margin; 
-  const rightEdgeX = bowlX + boxWidth / 2;
-  const rightEdgeY = bowlY - 120 + margin; 
-  const leftEdgeX = bowlX - boxWidth / 2;
-  const leftEdgeY = rightEdgeY;
+  // const bowlX = cenDiv.offsetWidth / 2;
+  // const bowlY = cenDiv.offsetHeight / 2 + 500 + margin; 
+  // const rightEdgeX = bowlX + boxWidth / 2;
+  // const rightEdgeY = bowlY - 120 + margin; 
+  // const leftEdgeX = bowlX - boxWidth / 2;
+  // const leftEdgeY = rightEdgeY;
   
-  const bowl = Bodies.rectangle(bowlX, bowlY, boxWidth, 20, { isStatic: true, render: { fillStyle: 'transparent' } });
-  const rightEdge = Bodies.rectangle(rightEdgeX, rightEdgeY, 15, 220, { isStatic: true, render: { fillStyle: 'transparent' } });
-  const leftEdge = Bodies.rectangle(leftEdgeX, leftEdgeY, 15, 220, { isStatic: true, render: { fillStyle: 'transparent' } });
+  // const bowl = Bodies.rectangle(bowlX, bowlY, boxWidth, 20, { isStatic: true, render: { fillStyle: 'black' } });
+  // const rightEdge = Bodies.rectangle(rightEdgeX, rightEdgeY, 15, 220, { isStatic: true, render: { fillStyle: 'black' } });
+  // const leftEdge = Bodies.rectangle(leftEdgeX, leftEdgeY, 15, 220, { isStatic: true, render: { fillStyle: 'black' } });
 
-  World.add(engine.world, [bowl, rightEdge, leftEdge]);
+  // World.add(engine.world, [bowl, rightEdge, leftEdge]);
+
+  const ground = Bodies.rectangle(
+  window.innerWidth / 2,           // center x
+  window.innerHeight - 10,         // near bottom
+  window.innerWidth,               // full width
+  50,                              // thin height
+  {
+    isStatic: true,
+    render: {
+      fillStyle: 'transparent',          // visible for testing
+    },
+  }
+);
+
+  World.add(engine.world, ground);
+
+
+
+  // 
 
   const mouse = Mouse.create(render.canvas);
   mouseConstraint = MouseConstraint.create(engine, {
@@ -414,7 +428,7 @@ function checkIfAlreadyExists(p_el){
 }
 
 function generateTopIngredients(ingredients) {
-  const batchSize = 50;
+  const batchSize = 230;
   let currentIndex = 0;
 
   function addIngredientEventListener(ingred, p_el, img_el) {
@@ -510,7 +524,7 @@ function createPear(p_el) {
           yScale: 0.2,
         },
       },
-      restitution: 0.4,
+      restitution: 0.6,
       angle: Math.random() * Math.PI,
       friction: 0.7,
     });
@@ -544,12 +558,12 @@ function removeTheFood(getText) {
 function addToList(p_el, img_el) {
   const div_tag = document.createElement('div')
   div_tag.classList.add('item_el')
-  const x_tag = document.createElement('span')
-  x_tag.classList.add('x_tag')
-  x_tag.innerHTML = `<img src="../images/cancel.png" class="cancel-icon">`  
+  // const x_tag = document.createElement('span')
+  // x_tag.classList.add('x_tag')
+  // x_tag.innerHTML = `<img src="../images/cancel.png" class="cancel-icon">`  
   div_tag.append(p_el)
   div_tag.append(img_el)
-  div_tag.append(x_tag)
+  // div_tag.append(x_tag)
 
   itemsList.append(div_tag)
 
