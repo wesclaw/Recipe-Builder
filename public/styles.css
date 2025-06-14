@@ -3,22 +3,31 @@
   padding: 0;
   box-sizing: border-box;
 }
-/* if we remove this, the canvas is at the bottom but we can drag and drop. remove the bucket . keeo thid  */
+
 canvas{
-  /* position: absolute !important;
+  position: absolute !important;
   top: 0 !important;
   z-index: -1 !important;
-  background-color: rgba(255, 0, 0, 0.281) !important; */
 
 
+  /*  */
+  /* background-color: red !important; */
 
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
- 
+
+  /*  */
 } 
+
+.donate-button {
+  display: inline-block;
+  background-color: #ffdd00;
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
 
 body{
   background-color: ghostwhite;
@@ -78,26 +87,22 @@ footer{
 
 h1{
   font-family: 'Roboto', sans-serif;
-  font-size: 3rem;
+  font-size: 2.3rem;
   margin-bottom: 20px;
   margin-top: 40px;
   text-align: center;
-  z-index: 1;
-  position: relative;
+  min-width: 100vw;
 }
 
 .wrapper-for-buttons{
-  position: absolute;
-  top: 0;
-  z-index: 2;
   margin: 0px auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-  max-height: 220px;
-  min-height: 220px;
+  max-height: 205px;
+  min-height: 205px;
   overflow: auto;
   border: 5px rgba(0, 255, 0, 0.356) dashed;
   padding-top: 10px;
@@ -106,7 +111,7 @@ h1{
   /* scrollbar-width: thin;  */
   scrollbar-width: unset;
   scrollbar-color: darkgray lightgray; 
-  background-color: white;
+
   /* Webkit (Chrome, Safari, Opera) */
   &::-webkit-scrollbar {
     width: 15px;
@@ -132,12 +137,11 @@ h1{
   font-size: 1.5rem !important;
   color: gray;
   padding: 20px;
-  padding-left: 20px;
+  padding-left: 50px;
   outline: none;
   border: none;
   box-shadow: 0px 0px 10px 0px rgba(12, 8, 8, 0.322);
   border-radius: 40px;
-  margin: 0 auto;
 }
 
 .inputSearch:focus{
@@ -149,14 +153,12 @@ h1{
   justify-content: start;
   align-items: center;
   position: relative;
-  z-index: 1;
   /* margin-bottom: 50px; */
 }
 
 .submitBtn{
   position: absolute;
   padding: 15px;
-  z-index: 99;
   font-size: 1.5rem;
   background-color: transparent;
   cursor: pointer;
@@ -167,15 +169,13 @@ h1{
 }
 
 .container {
-  /* background-color: lime; */
-  position: absolute;
-  top: 40%;
-  /* width: 75%; */
-  left: 50%;
+  width: 50vw;
+  display: flex;
   margin: auto;
-  transform: translateX(-50%);
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   flex-wrap: wrap;
-  z-index: 2;
 }
 
 .ingred {
@@ -233,13 +233,7 @@ h1{
   gap: 1px;
   min-height: 50px;
   display:grid;
-  grid-template-columns: 1fr 1fr, 1fr, 1fr;
-  /* background-color: lime; */
-  position: absolute;
-  width: 100vw;
-  bottom: 0 !important;
-  /* width: 50%; */
-  /* z-index: 1; */
+  grid-template-columns: 1fr 1fr;
 }
 
 .potImage {
@@ -275,12 +269,14 @@ h1{
   justify-content: center;
   align-items: center;
   position: absolute;  
-  top: -900px !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);  
   background: rgba(90, 109, 131, 0.548);
+  border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
-  z-index: 99;
 }
 
 .download-btn{
@@ -379,7 +375,7 @@ h1{
   gap: 10px;
   background-color:  rgba(255, 0, 0, 0.356);
   cursor: pointer;
-  /* position: relative; */
+  position: relative;
 }
 
 .x_tag{
@@ -449,7 +445,6 @@ h1{
   font-weight: bold;
   font-size: 1rem;
   font-family: 'Roboto', sans-serif;
-
 }
 
 .recipeBtn:hover {
@@ -459,20 +454,12 @@ h1{
 }
 
 .holder{
-  /* text-align: center;
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px; */
-  position: absolute;
-  top: 85%;
-  left: 50%;
-  z-index: 2;
-  transform: translate(-50%, -50%); 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-bottom: 10px;
 }
 
 @media (max-width: 1000px) {
@@ -568,7 +555,3 @@ h1{
     white-space: pre-wrap;
   }
 }
-
-
-
-
